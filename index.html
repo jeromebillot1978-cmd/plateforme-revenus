@@ -13,8 +13,8 @@
 <link rel="sitemap" type="application/xml" title="Sitemap" href="https://plateforme-revenus.fr/sitemap.xml">
 <link rel="alternate" hreflang="fr" href="https://plateforme-revenus.fr/">
 
-<!-- Vérification Google Search Console — remplacer XXXXXXXX par ton code -->
-<!-- <meta name="google-site-verification" content="XXXXXXXX"> -->
+<!-- Vérification Google Search Console -->
+<meta name="google-site-verification" content="google644193a0c87390d0">
 
 <!-- Vérification Bing Webmaster Tools -->
 <!-- <meta name="msvalidate.01" content="XXXXXXXX"> -->
@@ -208,7 +208,6 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
 .section-label::before { content: ''; width: 3px; height: 1.4rem; background: linear-gradient(180deg, var(--blue), var(--gold)); border-radius: 2px; flex-shrink: 0; }
 .section-label h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; color: var(--text); }
 
-/* ── GRILLE PRINCIPALE : 2 colonnes cashback + BoursoBank pleine largeur ── */
 .all-cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -219,7 +218,6 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
   overflow: hidden;
 }
 
-/* BoursoBank occupe les 2 colonnes */
 .all-cards-grid .bourso-card {
   grid-column: 1 / -1;
 }
@@ -238,7 +236,6 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
 .card-tag { display: inline-block; background: rgba(59,142,243,0.08); border: 1px solid rgba(59,142,243,0.15); border-radius: 4px; padding: 0.2rem 0.6rem; font-size: 0.68rem; color: var(--blue2); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; align-self: flex-start; }
 .card-tag.gold { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.2); color: var(--gold2); }
 
-/* ── Reviews inline dans les cartes ── */
 .card-reviews { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.25rem; border-top: 1px solid var(--border); padding-top: 0.75rem; }
 .card-review { display: flex; flex-direction: column; gap: 0.15rem; }
 .card-review-top { display: flex; align-items: center; gap: 0.5rem; }
@@ -246,14 +243,12 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
 .card-review-author { color: var(--text3); font-size: 0.65rem; font-weight: 300; }
 .card-review-text { font-size: 0.72rem; color: var(--text2); font-weight: 300; line-height: 1.45; font-style: italic; }
 
-/* ── Gift tags ── */
 .card-gift { margin-top: 0.25rem; }
 .card-gift-label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.65rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; margin-bottom: 0.4rem; }
 .card-gift-list { display: flex; flex-wrap: wrap; gap: 0.35rem; }
 .card-gift-tag { display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 4px; padding: 0.15rem 0.5rem; font-size: 0.67rem; color: var(--text2); font-weight: 400; }
 .card-gift-discount { color: #4ade80; font-weight: 600; }
 
-/* ── BoursoBank intégrée : layout horizontal dans la grille ── */
 .bourso-card {
   background: var(--surface);
   padding: 2rem 2.5rem;
@@ -308,7 +303,6 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
 
 .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent); margin: 4rem 0; }
 
-/* ── Comment ça marche ── */
 .how-grid { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: start; gap: 0; }
 .how-step { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; }
 .how-connector { display: flex; align-items: center; justify-content: center; padding: 0 0.5rem; margin-top: 2rem; }
@@ -317,7 +311,6 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
 .how-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--text); letter-spacing: -0.2px; }
 .how-desc { font-size: 0.8rem; color: var(--text2); line-height: 1.6; font-weight: 300; }
 
-/* ── FAQ ── */
 .faq-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
 .faq-item { border-bottom: 1px solid var(--border); }
 .faq-item:last-child { border-bottom: none; }
@@ -329,7 +322,6 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
 .faq-a.open { max-height: 200px; padding: 1rem 1.5rem 1.25rem; }
 .faq-a p { font-size: 0.82rem; color: var(--text2); line-height: 1.7; font-weight: 300; }
 
-/* ── Testimonials ── */
 .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 .testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; transition: border-color 0.25s, background 0.25s; }
 .testimonial-card:hover { background: var(--surface2); border-color: rgba(255,255,255,0.12); }
@@ -341,7 +333,6 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
 .testimonial-meta { font-size: 0.65rem; color: var(--text3); font-weight: 300; margin-top: 0.1rem; }
 .testimonial-badge { margin-left: auto; font-size: 0.62rem; color: #4ade80; font-weight: 500; white-space: nowrap; }
 
-/* ── Stats globales ── */
 .stats-global { display: flex; align-items: center; justify-content: center; gap: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 4rem; }
 .stat-item { flex: 1; padding: 2rem 1.5rem; text-align: center; }
 .stat-value { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--text); letter-spacing: -1px; line-height: 1; }
@@ -349,7 +340,6 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
 .stat-label { font-size: 0.72rem; color: var(--text3); margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 400; }
 .stat-sep { width: 1px; height: 3rem; background: var(--border); flex-shrink: 0; }
 
-/* ── Analytics bar ── */
 .analytics-bar { display: flex; align-items: center; gap: 0; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 4rem; }
 .analytics-stat { flex: 1; padding: 1.25rem 1rem; text-align: center; }
 .analytics-num { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--text); letter-spacing: -0.5px; line-height: 1; }
@@ -357,7 +347,6 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
 .analytics-label { font-size: 0.65rem; color: var(--text3); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px; }
 .analytics-sep { width: 1px; height: 2.5rem; background: var(--border); flex-shrink: 0; }
 
-/* ── Email section ── */
 .email-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; text-align: center; position: relative; overflow: hidden; }
 .email-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--blue), transparent); opacity: 0.4; }
 .email-eyebrow { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(59,142,243,0.08); border: 1px solid rgba(59,142,243,0.15); border-radius: 20px; padding: 0.3rem 0.85rem; font-size: 0.68rem; color: var(--blue2); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1rem; }
@@ -383,7 +372,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── SHAKE MICRO-INTERACTION ── */
 @keyframes shake-attention {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   15%       { transform: translateY(-3px) rotate(-1.5deg); }
@@ -425,7 +413,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 
-<!-- HEADER -->
 <header>
   <div class="wrap">
     <div class="header-inner">
@@ -444,7 +431,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="wrap">
     <div class="hero-eyebrow">
@@ -476,7 +462,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
 
 <div class="wrap">
 
-  <!-- SECTION UNIQUE : Cashback + Banque -->
   <section class="section reveal">
     <div class="section-label">
       <h2 id="cashback">Cashback Gratuit &amp; Banque en Ligne — Nos Partenaires</h2>
@@ -613,7 +598,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
         </div>
       </a>
 
-      <!-- Case vide pour équilibrer la grille — BoursoBank prend la ligne suivante en pleine largeur -->
+      <!-- Astuce -->
       <div style="background:var(--surface); display:flex; align-items:center; justify-content:center; padding:1rem;">
         <div style="text-align:center; color:var(--text3);">
           <div style="font-size:1.5rem; margin-bottom:0.5rem;">💡</div>
@@ -621,8 +606,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
         </div>
       </div>
 
-      <!-- BoursoBank — pleine largeur -->
-      <a href="https://bour.so/p/soDqAOA0NCL" target="_blank" rel="nofollow ugc noopener noreferrer" onclick="trackClick('boursobank')" class="bourso-card">
+      <!-- BoursoBank -->
+      <a href="https://bour.so/p/soDqAOA0NCL" target="_blank" rel="nofollow ugc noopener noreferrer" onclick="trackClick('boursobank')" class="bourso-card" id="banque">
         <div class="bourso-left">
           <div class="bourso-icon">🏦</div>
           <div class="bourso-info">
@@ -667,10 +652,9 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
 
   <div class="divider"></div>
 
-  <!-- COMMENT ÇA MARCHE -->
   <section class="section reveal" id="comment-ca-marche">
     <div class="section-label">
-      <h2 id="comment-ca-marche">Comment gagner de l'argent avec le cashback gratuit</h2>
+      <h2>Comment gagner de l'argent avec le cashback gratuit</h2>
     </div>
     <div class="how-grid">
       <div class="how-step">
@@ -701,10 +685,9 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
 
   <div class="divider"></div>
 
-  <!-- FAQ -->
   <section class="section reveal" id="faq">
     <div class="section-label">
-      <h2 id="faq">FAQ Cashback &amp; Banque en Ligne — Questions Fréquentes</h2>
+      <h2>FAQ Cashback &amp; Banque en Ligne — Questions Fréquentes</h2>
     </div>
     <div class="faq-list">
       <div class="faq-item">
@@ -757,10 +740,9 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
 
   <div class="divider"></div>
 
-  <!-- TÉMOIGNAGES -->
   <section class="section reveal" id="temoignages">
     <div class="section-label">
-      <h2 id="temoignages">Avis &amp; Témoignages — Cashback iGraal, eBuyClub, Poulpeo, BoursoBank</h2>
+      <h2>Avis &amp; Témoignages — Cashback iGraal, eBuyClub, Poulpeo, BoursoBank</h2>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial-card">
@@ -838,7 +820,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
     </div>
   </section>
 
-  <!-- STATS GLOBALES -->
   <div class="stats-global reveal">
     <div class="stat-item">
       <div class="stat-value">12 400<span>+</span></div>
@@ -863,7 +844,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
 
   <div class="divider"></div>
 
-  <!-- ANALYTICS BAR -->
   <div class="analytics-bar reveal" id="analytics-bar">
     <div class="analytics-stat">
       <div class="analytics-num" id="cnt-total"><span>0</span></div>
@@ -891,7 +871,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
     </div>
   </div>
 
-  <!-- CAPTURE EMAIL -->
   <section class="section reveal" id="newsletter">
     <div class="email-section">
       <div class="email-eyebrow">
@@ -917,7 +896,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
 
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div class="footer-inner">
@@ -934,7 +912,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
 </footer>
 
 <script>
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
@@ -942,7 +919,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Analytics tracking
   const clicks = { igraal: 0, ebuyclub: 0, poulpeo: 0, boursobank: 0 };
   function trackClick(name) {
     clicks[name] = (clicks[name] || 0) + 1;
@@ -963,7 +939,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
     anim(document.getElementById('cnt-boursobank'), clicks.boursobank);
   }
 
-  // Capture email
   const emails = JSON.parse(localStorage.getItem('pr_emails') || '[]');
   function submitEmail() {
     const input = document.getElementById('email-input');
@@ -983,7 +958,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
     if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') submitEmail(); });
   });
 
-  // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -992,7 +966,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
     });
   });
 
-  // Micro-interaction BoursoBank
   setTimeout(() => {
     const btn = document.querySelector('.btn-gold');
     if (!btn) return;
