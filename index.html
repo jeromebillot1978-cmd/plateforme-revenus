@@ -82,7 +82,21 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
 .section-label::before { content: ''; width: 3px; height: 1.4rem; background: linear-gradient(180deg, var(--blue), var(--gold)); border-radius: 2px; flex-shrink: 0; }
 .section-label h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; color: var(--text); }
 
-.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+/* ── GRILLE PRINCIPALE : 2 colonnes cashback + BoursoBank pleine largeur ── */
+.all-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* BoursoBank occupe les 2 colonnes */
+.all-cards-grid .bourso-card {
+  grid-column: 1 / -1;
+}
 
 .partner-card { background: var(--surface); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; transition: background 0.25s ease, transform 0.2s ease; position: relative; overflow: hidden; text-decoration: none; }
 .partner-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(59,142,243,0.04) 0%, transparent 60%); opacity: 0; transition: opacity 0.3s; }
@@ -98,16 +112,68 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
 .card-tag { display: inline-block; background: rgba(59,142,243,0.08); border: 1px solid rgba(59,142,243,0.15); border-radius: 4px; padding: 0.2rem 0.6rem; font-size: 0.68rem; color: var(--blue2); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; align-self: flex-start; }
 .card-tag.gold { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.2); color: var(--gold2); }
 
-.featured-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; margin-bottom: 1.5rem; position: relative; overflow: hidden; transition: border-color 0.3s, background 0.3s; }
-.featured-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.5; }
-.featured-card:hover { border-color: rgba(201,168,76,0.25); background: var(--surface2); }
-.featured-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
-.featured-icon { width: 52px; height: 52px; border-radius: 12px; background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(59,142,243,0.1)); border: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
-.featured-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--text); letter-spacing: -0.4px; }
-.featured-sub { font-size: 0.8rem; color: var(--text3); margin-top: 0.15rem; }
-.featured-desc { font-size: 0.875rem; color: var(--text2); line-height: 1.65; font-weight: 300; max-width: 520px; }
-.featured-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-.featured-badge { display: inline-flex; align-items: center; gap: 0.35rem; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 6px; padding: 0.3rem 0.75rem; font-size: 0.72rem; color: var(--text2); font-weight: 400; }
+/* ── Reviews inline dans les cartes ── */
+.card-reviews { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.25rem; border-top: 1px solid var(--border); padding-top: 0.75rem; }
+.card-review { display: flex; flex-direction: column; gap: 0.15rem; }
+.card-review-top { display: flex; align-items: center; gap: 0.5rem; }
+.card-review-stars { color: #f59e0b; font-size: 0.65rem; letter-spacing: 1px; }
+.card-review-author { color: var(--text3); font-size: 0.65rem; font-weight: 300; }
+.card-review-text { font-size: 0.72rem; color: var(--text2); font-weight: 300; line-height: 1.45; font-style: italic; }
+
+/* ── Gift tags ── */
+.card-gift { margin-top: 0.25rem; }
+.card-gift-label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.65rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; margin-bottom: 0.4rem; }
+.card-gift-list { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.card-gift-tag { display: inline-flex; align-items: center; gap: 0.3rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 4px; padding: 0.15rem 0.5rem; font-size: 0.67rem; color: var(--text2); font-weight: 400; }
+.card-gift-discount { color: #4ade80; font-weight: 600; }
+
+/* ── BoursoBank intégrée : layout horizontal dans la grille ── */
+.bourso-card {
+  background: var(--surface);
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+.bourso-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.6;
+}
+.bourso-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.bourso-card:hover { background: var(--surface2); }
+.bourso-card:hover::after { opacity: 1; }
+.bourso-card:hover .card-arrow { border-color: var(--gold); color: var(--gold2); transform: translate(2px, -2px); }
+
+.bourso-left { display: flex; align-items: flex-start; gap: 1.25rem; flex: 1; min-width: 0; }
+.bourso-icon { width: 52px; height: 52px; border-radius: 12px; background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(59,142,243,0.1)); border: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+.bourso-info { flex: 1; min-width: 0; }
+.bourso-title-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.3rem; }
+.bourso-name { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--text); letter-spacing: -0.4px; }
+.bourso-sub { font-size: 0.72rem; color: var(--text3); }
+.bourso-desc { font-size: 0.82rem; color: var(--text2); line-height: 1.6; font-weight: 300; max-width: 520px; margin-bottom: 0.75rem; }
+.bourso-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.bourso-badge { display: inline-flex; align-items: center; gap: 0.35rem; background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.15); border-radius: 6px; padding: 0.25rem 0.65rem; font-size: 0.68rem; color: var(--gold2); font-weight: 400; }
+
+.bourso-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.75rem; flex-shrink: 0; }
+.bourso-prime { text-align: right; }
+.bourso-prime-amount { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--gold2); letter-spacing: -1px; line-height: 1; }
+.bourso-prime-label { font-size: 0.7rem; color: var(--text3); margin-top: 0.2rem; }
 
 .btn-primary { display: inline-flex; align-items: center; gap: 0.6rem; background: linear-gradient(135deg, #1a6fd4, #2d8ef5); color: #fff; text-decoration: none; padding: 0.85rem 1.8rem; border-radius: 10px; font-family: var(--font-display); font-size: 0.875rem; font-weight: 600; letter-spacing: -0.2px; transition: all 0.25s ease; white-space: nowrap; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 20px rgba(59,142,243,0.25); }
 .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(59,142,243,0.4); background: linear-gradient(135deg, #2278e0, #3b99ff); }
@@ -115,6 +181,71 @@ header { position: sticky; top: 0; z-index: 100; background: rgba(8,9,13,0.85); 
 .btn-gold:hover { box-shadow: 0 8px 30px rgba(201,168,76,0.35); background: linear-gradient(135deg, #c49932, #e0b648); }
 
 .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border) 30%, var(--border) 70%, transparent); margin: 4rem 0; }
+
+/* ── Comment ça marche ── */
+.how-grid { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: start; gap: 0; }
+.how-step { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.how-connector { display: flex; align-items: center; justify-content: center; padding: 0 0.5rem; margin-top: 2rem; }
+.how-connector::after { content: '→'; color: var(--text3); font-size: 1.2rem; }
+.how-number { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--border); letter-spacing: -1px; line-height: 1; }
+.how-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--text); letter-spacing: -0.2px; }
+.how-desc { font-size: 0.8rem; color: var(--text2); line-height: 1.6; font-weight: 300; }
+
+/* ── FAQ ── */
+.faq-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { width: 100%; background: var(--surface); border: none; color: var(--text); padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; font-family: var(--font-body); font-size: 0.875rem; font-weight: 500; text-align: left; transition: background 0.2s; }
+.faq-q:hover { background: var(--surface2); }
+.faq-icon { flex-shrink: 0; transition: transform 0.3s ease; color: var(--text3); }
+.faq-q[aria-expanded="true"] .faq-icon { transform: rotate(180deg); }
+.faq-a { background: var(--bg2); max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s ease; }
+.faq-a.open { max-height: 200px; padding: 1rem 1.5rem 1.25rem; }
+.faq-a p { font-size: 0.82rem; color: var(--text2); line-height: 1.7; font-weight: 300; }
+
+/* ── Testimonials ── */
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.testimonial-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; transition: border-color 0.25s, background 0.25s; }
+.testimonial-card:hover { background: var(--surface2); border-color: rgba(255,255,255,0.12); }
+.testimonial-stars { color: #f59e0b; font-size: 0.75rem; letter-spacing: 2px; }
+.testimonial-text { font-size: 0.82rem; color: var(--text2); line-height: 1.65; font-weight: 300; font-style: italic; flex: 1; }
+.testimonial-footer { display: flex; align-items: center; gap: 0.75rem; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+.testimonial-avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--gold)); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; color: #fff; flex-shrink: 0; font-family: var(--font-display); }
+.testimonial-name { font-size: 0.78rem; font-weight: 600; color: var(--text); font-family: var(--font-display); }
+.testimonial-meta { font-size: 0.65rem; color: var(--text3); font-weight: 300; margin-top: 0.1rem; }
+.testimonial-badge { margin-left: auto; font-size: 0.62rem; color: #4ade80; font-weight: 500; white-space: nowrap; }
+
+/* ── Stats globales ── */
+.stats-global { display: flex; align-items: center; justify-content: center; gap: 0; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 4rem; }
+.stat-item { flex: 1; padding: 2rem 1.5rem; text-align: center; }
+.stat-value { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--text); letter-spacing: -1px; line-height: 1; }
+.stat-value span { font-size: 1.2rem; color: var(--gold2); }
+.stat-label { font-size: 0.72rem; color: var(--text3); margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 400; }
+.stat-sep { width: 1px; height: 3rem; background: var(--border); flex-shrink: 0; }
+
+/* ── Analytics bar ── */
+.analytics-bar { display: flex; align-items: center; gap: 0; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 4rem; }
+.analytics-stat { flex: 1; padding: 1.25rem 1rem; text-align: center; }
+.analytics-num { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--text); letter-spacing: -0.5px; line-height: 1; }
+.analytics-num span { transition: color 0.3s ease; }
+.analytics-label { font-size: 0.65rem; color: var(--text3); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.analytics-sep { width: 1px; height: 2.5rem; background: var(--border); flex-shrink: 0; }
+
+/* ── Email section ── */
+.email-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 3rem; text-align: center; position: relative; overflow: hidden; }
+.email-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--blue), transparent); opacity: 0.4; }
+.email-eyebrow { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(59,142,243,0.08); border: 1px solid rgba(59,142,243,0.15); border-radius: 20px; padding: 0.3rem 0.85rem; font-size: 0.68rem; color: var(--blue2); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1rem; }
+.email-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--text); letter-spacing: -0.5px; margin-bottom: 0.6rem; }
+.email-sub { font-size: 0.85rem; color: var(--text2); font-weight: 300; line-height: 1.6; max-width: 420px; margin: 0 auto 1.5rem; }
+.email-form { display: flex; gap: 0.5rem; max-width: 400px; margin: 0 auto; }
+.email-input { flex: 1; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; font-family: var(--font-body); font-size: 0.875rem; color: var(--text); outline: none; transition: border-color 0.2s; }
+.email-input:focus { border-color: rgba(59,142,243,0.4); }
+.email-input::placeholder { color: var(--text3); }
+.email-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: linear-gradient(135deg, #1a6fd4, #2d8ef5); color: #fff; border: none; padding: 0.75rem 1.4rem; border-radius: 8px; font-family: var(--font-display); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: all 0.25s; white-space: nowrap; box-shadow: 0 4px 15px rgba(59,142,243,0.25); }
+.email-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(59,142,243,0.4); }
+.email-success { display: none; align-items: center; justify-content: center; gap: 0.5rem; color: #4ade80; font-size: 0.875rem; font-weight: 500; padding: 0.75rem; }
+.email-success.show { display: flex; }
+.email-note { font-size: 0.7rem; color: var(--text3); margin-top: 1rem; font-weight: 300; }
 
 footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relative; z-index: 1; }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
@@ -125,7 +256,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-
 
 /* ── SHAKE MICRO-INTERACTION ── */
 @keyframes shake-attention {
@@ -145,41 +275,23 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 10px; }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .all-cards-grid { grid-template-columns: 1fr; }
+  .bourso-card { flex-direction: column; align-items: flex-start; }
+  .bourso-right { align-items: flex-start; }
+  .how-grid { grid-template-columns: 1fr; }
+  .how-connector { display: none; }
+  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
   .hero { padding: 4rem 0 3rem; }
   .hero h1 { letter-spacing: -1.5px; }
-  .featured-card { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .stats-global { flex-direction: column; }
+  .stat-sep { width: 80%; height: 1px; }
+  .analytics-bar { flex-wrap: wrap; }
   .footer-inner { flex-direction: column; text-align: center; }
 }
-
-
-  /* ── PROOF MINI (existing) ── */
-  .proof-mini {
-    margin-top: 0.75rem;
-    border-top: 1px solid var(--border);
-    padding-top: 0.6rem;
-  }
-  .proof-mini-label {
-    font-size: 0.65rem;
-    color: var(--text3);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.4rem;
-    font-weight: 500;
-  }
-  .proof-mini-rows { display: flex; flex-direction: column; gap: 0.25rem; }
-  .proof-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.72rem;
-  }
-  .proof-date { color: var(--text3); font-weight: 300; }
-  .proof-amount { color: #4ade80; font-weight: 600; font-size: 0.75rem; }
-  .proof-review { justify-content: flex-start; gap: 0.5rem; }
-  .proof-stars { color: #f59e0b; font-size: 0.65rem; letter-spacing: 1px; }
-  .proof-author { color: var(--text3); font-size: 0.65rem; font-weight: 300; }
-
 </style>
 </head>
 <body>
@@ -220,13 +332,13 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
 
 <div class="wrap">
 
-  <!-- CASHBACK -->
+  <!-- SECTION UNIQUE : Cashback + Banque -->
   <section class="section reveal">
     <div class="section-label">
-      <h2>Cashback Intelligent</h2>
+      <h2>Nos Partenaires Sélectionnés</h2>
     </div>
 
-    <div class="cards-grid">
+    <div class="all-cards-grid">
 
       <!-- iGraal -->
       <a href="https://fr.igraal.com/parrainage?parrain=AG_5aa764fad8df6" target="_blank" rel="nofollow ugc noopener noreferrer" onclick="trackClick('igraal')" class="partner-card">
@@ -253,7 +365,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
               <span class="card-review-author">Thomas R. · avr. 2026</span>
             </div>
             <div class="card-review-text">Paiement PayPal rapide, aucun problème depuis 2 ans.</div>
-
+          </div>
+        </div>
         <div class="card-gift">
           <div class="card-gift-label">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 12v10H4V12M22 7H2v5h20V7zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
@@ -295,7 +408,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
               <span class="card-review-author">Camille B. · avr. 2026</span>
             </div>
             <div class="card-review-text">Très bon catalogue de marchands, codes promo souvent cumulables.</div>
-
+          </div>
+        </div>
         <div class="card-gift">
           <div class="card-gift-label">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 12v10H4V12M22 7H2v5h20V7zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
@@ -337,7 +451,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
               <span class="card-review-author">Nini · 24 mai 2026</span>
             </div>
             <div class="card-review-text">Très bonne appli, interface claire et cashback versé sans souci.</div>
-
+          </div>
+        </div>
         <div class="card-gift">
           <div class="card-gift-label">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 12v10H4V12M22 7H2v5h20V7zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
@@ -354,48 +469,55 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
         </div>
       </a>
 
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- BANQUE -->
-  <section class="section reveal">
-    <div class="section-label">
-      <h2>Banque en Ligne</h2>
-    </div>
-
-    <div class="featured-card">
-      <div>
-        <div class="featured-top">
-          <div class="featured-icon">🏦</div>
-          <div>
-            <div class="featured-name">BoursoBank</div>
-            <div class="featured-sub">Banque en ligne N°1 en France</div>
-          </div>
-        </div>
-        <div class="featured-desc">
-          Référence depuis 15 ans, BoursoBank combine gratuité totale, carte sans conditions et primes de bienvenue généreuses. Une banque qui travaille pour vous, pas l'inverse.
-        </div>
-        <div class="featured-badges">
-          <div class="featured-badge">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-            Carte gratuite sans condition
-          </div>
-          <div class="featured-badge">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-            Jusqu'à 150€ de prime
-          </div>
-          <div class="featured-badge">
-            <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
-            Zéro frais cachés
-          </div>
+      <!-- Case vide pour équilibrer la grille — BoursoBank prend la ligne suivante en pleine largeur -->
+      <div style="background:var(--surface); display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="text-align:center; color:var(--text3);">
+          <div style="font-size:1.5rem; margin-bottom:0.5rem;">💡</div>
+          <div style="font-size:0.72rem; font-weight:400; letter-spacing:0.3px;">Cumulez les 3 plateformes<br>pour maximiser vos gains</div>
         </div>
       </div>
-      <a href="https://bour.so/p/soDqAOA0NCL" target="_blank" rel="nofollow ugc noopener noreferrer" onclick="trackClick('boursobank')" class="btn-primary btn-gold">
-        Ouvrir un compte
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+
+      <!-- BoursoBank — pleine largeur -->
+      <a href="https://bour.so/p/soDqAOA0NCL" target="_blank" rel="nofollow ugc noopener noreferrer" onclick="trackClick('boursobank')" class="bourso-card">
+        <div class="bourso-left">
+          <div class="bourso-icon">🏦</div>
+          <div class="bourso-info">
+            <div class="bourso-title-row">
+              <div class="bourso-name">BoursoBank</div>
+              <div class="card-tag gold">Banque N°1 en France</div>
+            </div>
+            <div class="bourso-sub">La banque en ligne de référence depuis 15 ans</div>
+            <div class="bourso-desc">
+              Carte gratuite sans condition de revenus, zéro frais cachés, et une prime de bienvenue généreuse. Une banque qui travaille pour vous, pas l'inverse.
+            </div>
+            <div class="bourso-badges">
+              <div class="bourso-badge">
+                <svg width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                Carte gratuite sans condition
+              </div>
+              <div class="bourso-badge">
+                <svg width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                Zéro frais cachés
+              </div>
+              <div class="bourso-badge">
+                <svg width="9" height="9" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                Retraits gratuits à l'étranger
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bourso-right">
+          <div class="bourso-prime">
+            <div class="bourso-prime-amount">150€</div>
+            <div class="bourso-prime-label">Prime de bienvenue offerte</div>
+          </div>
+          <span class="btn-primary btn-gold" style="pointer-events:none;">
+            Ouvrir un compte
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </span>
+        </div>
       </a>
+
     </div>
   </section>
 
@@ -441,7 +563,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
       <h2>Questions fréquentes</h2>
     </div>
     <div class="faq-list">
-
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
           <span>Est-ce vraiment gratuit ?</span>
@@ -451,7 +572,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
           <p>Oui, totalement. Ces plateformes sont 100% gratuites pour les utilisateurs. Elles se rémunèrent via des commissions versées par les marchands partenaires, qu'elles vous reversent en partie sous forme de cashback.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
           <span>Puis-je cumuler plusieurs plateformes ?</span>
@@ -461,7 +581,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
           <p>Oui, vous pouvez être inscrit sur iGraal, eBuyClub et Poulpeo simultanément. Comparez les taux avant chaque achat pour toujours activer le cashback le plus avantageux.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
           <span>Quand est-ce que je suis payé ?</span>
@@ -471,7 +590,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
           <p>Le cashback est d'abord en attente (délai de validation du marchand, généralement 30 à 90 jours). Une fois validé, vous pouvez le retirer dès 20€ via PayPal ou virement bancaire.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
           <span>Pourquoi ouvrir un compte BoursoBank ?</span>
@@ -481,7 +599,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
           <p>BoursoBank propose la carte bancaire gratuite sans conditions de revenus, zéro frais sur les retraits à l'étranger, et une prime de bienvenue jusqu'à 150€. C'est un complément idéal pour recevoir vos gains cashback sans frais.</p>
         </div>
       </div>
-
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
           <span>C'est quoi l'avantage du parrainage ?</span>
@@ -491,10 +608,8 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
           <p>En vous inscrivant via les liens de cette page, vous bénéficiez d'un bonus de bienvenue (crédits ou cashback offerts) que vous n'obtiendrez pas en vous inscrivant directement. C'est un avantage immédiat sans aucune contrepartie de votre part.</p>
         </div>
       </div>
-
     </div>
   </section>
-
 
   <div class="divider"></div>
 
@@ -504,7 +619,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
       <h2>Ce qu'ils en disent</h2>
     </div>
     <div class="testimonials-grid">
-
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
         <div class="testimonial-text">J'étais sceptique au début, mais après 6 mois j'ai récupéré plus de 200€ juste en passant par ces plateformes avant mes achats Amazon et Cdiscount. C'est devenu un réflexe.</div>
@@ -517,7 +631,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
           <div class="testimonial-badge">✓ Vérifié</div>
         </div>
       </div>
-
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
         <div class="testimonial-text">BoursoBank + iGraal c'est la combinaison parfaite. Zéro frais bancaires, et en plus je récupère du cashback sur mes achats. Je regrette de ne pas l'avoir fait plus tôt.</div>
@@ -530,7 +643,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
           <div class="testimonial-badge">✓ Vérifié</div>
         </div>
       </div>
-
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
         <div class="testimonial-text">Le truc c'est de cumuler les 3 plateformes et de comparer les taux avant chaque achat. En faisant ça sur mes courses de rentrée scolaire, j'ai eu 47€ de cashback en un mois.</div>
@@ -543,7 +655,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
           <div class="testimonial-badge">✓ Vérifié</div>
         </div>
       </div>
-
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★☆</div>
         <div class="testimonial-text">Poulpeo m'a surpris par la rapidité de validation. Et le support répond vite quand il y a un problème. Je conseille à tout mon entourage.</div>
@@ -556,7 +667,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
           <div class="testimonial-badge">✓ Vérifié</div>
         </div>
       </div>
-
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
         <div class="testimonial-text">eBuyClub pour le quotidien, iGraal pour les gros achats. En cumulant les deux j'arrive à financer une partie de mes vacances chaque année. Ça semble bête mais ça marche vraiment.</div>
@@ -569,7 +679,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
           <div class="testimonial-badge">✓ Vérifié</div>
         </div>
       </div>
-
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
         <div class="testimonial-text">La prime BoursoBank seule valait le coup d'ouvrir un compte. Et la carte est vraiment gratuite, sans condition de revenus minimum. Un sans-faute.</div>
@@ -582,7 +691,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
           <div class="testimonial-badge">✓ Vérifié</div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -663,7 +771,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
     </div>
   </section>
 
-
 </div>
 
 <!-- FOOTER -->
@@ -686,27 +793,18 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-
-  // ── Analytics tracking ──
+  // Analytics tracking
   const clicks = { igraal: 0, ebuyclub: 0, poulpeo: 0, boursobank: 0 };
-
   function trackClick(name) {
     clicks[name] = (clicks[name] || 0) + 1;
     updateAnalytics();
-    // GA4 si disponible
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'affiliate_click', { partner: name });
-    }
+    if (typeof gtag !== 'undefined') gtag('event', 'affiliate_click', { partner: name });
   }
-
   function updateAnalytics() {
     const total = Object.values(clicks).reduce((a, b) => a + b, 0);
     const anim = (el, val) => {
@@ -721,32 +819,21 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
     anim(document.getElementById('cnt-boursobank'), clicks.boursobank);
   }
 
-  // ── Capture email ──
+  // Capture email
   const emails = JSON.parse(localStorage.getItem('pr_emails') || '[]');
-
   function submitEmail() {
     const input = document.getElementById('email-input');
     const email = input.value.trim();
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!re.test(email)) {
-      input.style.borderColor = 'rgba(239,68,68,0.6)';
-      input.focus();
-      setTimeout(() => input.style.borderColor = '', 1500);
-      return;
+      input.style.borderColor = 'rgba(239,68,68,0.6)'; input.focus();
+      setTimeout(() => input.style.borderColor = '', 1500); return;
     }
-    if (!emails.includes(email)) {
-      emails.push(email);
-      localStorage.setItem('pr_emails', JSON.stringify(emails));
-    }
+    if (!emails.includes(email)) { emails.push(email); localStorage.setItem('pr_emails', JSON.stringify(emails)); }
     document.getElementById('email-form').style.display = 'none';
     document.getElementById('email-success').classList.add('show');
-    // GA4
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'email_signup', { email_domain: email.split('@')[1] });
-    }
+    if (typeof gtag !== 'undefined') gtag('event', 'email_signup', { email_domain: email.split('@')[1] });
   }
-
-  // Enter dans le champ email
   document.addEventListener('DOMContentLoaded', () => {
     const inp = document.getElementById('email-input');
     if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') submitEmail(); });
@@ -756,33 +843,22 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
-      // Fermer tous
-      document.querySelectorAll('.faq-q').forEach(b => {
-        b.setAttribute('aria-expanded', 'false');
-        b.nextElementSibling.classList.remove('open');
-      });
-      // Ouvrir si était fermé
-      if (!expanded) {
-        btn.setAttribute('aria-expanded', 'true');
-        btn.nextElementSibling.classList.add('open');
-      }
+      document.querySelectorAll('.faq-q').forEach(b => { b.setAttribute('aria-expanded', 'false'); b.nextElementSibling.classList.remove('open'); });
+      if (!expanded) { btn.setAttribute('aria-expanded', 'true'); btn.nextElementSibling.classList.add('open'); }
     });
   });
 
-
-  // Micro-interaction bouton BoursoBank après 10s
+  // Micro-interaction BoursoBank
   setTimeout(() => {
     const btn = document.querySelector('.btn-gold');
     if (!btn) return;
     btn.classList.add('btn-shake');
     btn.addEventListener('animationend', () => btn.classList.remove('btn-shake'), { once: true });
-    // Répéter toutes les 15s
     setInterval(() => {
       btn.classList.add('btn-shake');
       btn.addEventListener('animationend', () => btn.classList.remove('btn-shake'), { once: true });
     }, 15000);
   }, 10000);
-
 </script>
 
 <!-- TELEGRAM CHAT WIDGET -->
@@ -791,8 +867,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
   #tg-panel { width: 320px; background: #13161f; border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04); transform: scale(0.9) translateY(20px); opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); transform-origin: bottom right; }
   #tg-panel.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
   .tg-header { background: linear-gradient(135deg, #1a6fd4, #2389f5); padding: 1rem 1.2rem; display: flex; align-items: center; gap: 0.75rem; }
-  .tg-avatar { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; border: 2px solid rgba(255,255,255,0.25); flex-shrink: 0; overflow: hidden; }
-  .tg-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .tg-avatar { width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; border: 2px solid rgba(255,255,255,0.25); flex-shrink: 0; }
   .tg-info { flex: 1; }
   .tg-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; color: #fff; }
   .tg-status { display: flex; align-items: center; gap: 0.35rem; font-size: 0.7rem; color: rgba(255,255,255,0.75); margin-top: 0.1rem; }
@@ -802,8 +877,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
   .tg-messages { padding: 1.2rem; display: flex; flex-direction: column; gap: 0.75rem; background: #0e1018; min-height: 160px; }
   .tg-msg { display: flex; gap: 0.6rem; animation: msgIn 0.3s ease both; }
   @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-  .tg-msg-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #1a6fd4, #2389f5); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; margin-top: 2px; overflow: hidden; }
-  .tg-msg-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .tg-msg-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #1a6fd4, #2389f5); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; margin-top: 2px; }
   .tg-msg-bubble { background: #181c27; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px 12px 12px 2px; padding: 0.65rem 0.85rem; font-size: 0.8rem; color: #c8d0e0; line-height: 1.5; max-width: 220px; font-family: 'DM Sans', sans-serif; font-weight: 300; }
   .tg-msg-time { font-size: 0.6rem; color: #4e5668; margin-top: 0.25rem; margin-left: 34px; }
   .tg-typing { display: flex; gap: 0.6rem; align-items: center; opacity: 0; transition: opacity 0.3s; }
@@ -815,7 +889,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
   @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-5px); background: #3b8ef3; } }
   .tg-cta { padding: 1rem 1.2rem; background: #13161f; border-top: 1px solid rgba(255,255,255,0.06); }
   .tg-cta a { display: flex; align-items: center; justify-content: center; gap: 0.6rem; background: linear-gradient(135deg, #1a6fd4, #2d8ef5); color: #fff; text-decoration: none; padding: 0.75rem; border-radius: 10px; font-family: 'Syne', sans-serif; font-size: 0.82rem; font-weight: 600; transition: all 0.25s ease; box-shadow: 0 4px 15px rgba(59,142,243,0.3); }
-  .tg-cta a:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(59,142,243,0.45); background: linear-gradient(135deg, #2278e0, #3b99ff); }
+  .tg-cta a:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(59,142,243,0.45); }
   #tg-fab { width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, #1a6fd4, #2d8ef5); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(59,142,243,0.45); transition: all 0.3s ease; position: relative; }
   #tg-fab:hover { transform: scale(1.1); box-shadow: 0 12px 35px rgba(59,142,243,0.55); }
   #tg-fab svg { transition: all 0.3s ease; }
@@ -824,7 +898,6 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
   .tg-notif { position: absolute; top: -2px; right: -2px; width: 18px; height: 18px; background: #ef4444; border-radius: 50%; border: 2px solid var(--bg); font-size: 0.6rem; color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; animation: notif-pop 0.4s cubic-bezier(0.34,1.56,0.64,1) 2s both; }
   @keyframes notif-pop { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
   .tg-notif.hide { display: none; }
-  @media (max-width: 400px) { #tg-panel { width: calc(100vw - 3rem); } #tg-bubble { right: 1rem; bottom: 1rem; } }
 </style>
 
 <div id="tg-bubble">
@@ -833,10 +906,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
       <div class="tg-avatar">🐵</div>
       <div class="tg-info">
         <div class="tg-name">@JEROME1978</div>
-        <div class="tg-status">
-          <div class="tg-status-dot"></div>
-          En ligne maintenant
-        </div>
+        <div class="tg-status"><div class="tg-status-dot"></div>En ligne maintenant</div>
       </div>
       <button class="tg-close" onclick="toggleChat()">
         <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
