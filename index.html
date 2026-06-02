@@ -133,7 +133,8 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"></noscript>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -153,8 +154,8 @@
   --text2: #8892a4;
   --text3: #4e5668;
   --accent: #3b8ef3;
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
   --radius: 14px;
   --radius-sm: 8px;
 }
@@ -384,6 +385,9 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
   animation: shake-attention 0.7s ease both;
   box-shadow: 0 8px 30px rgba(201,168,76,0.55) !important;
 }
+
+img, video { width: 100%; height: auto; }
+.orb-1, .orb-2 { will-change: auto; }
 
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
@@ -911,7 +915,7 @@ footer { border-top: 1px solid var(--border); padding: 2.5rem 0; position: relat
   </div>
 </footer>
 
-<script>
+<script defer>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
