@@ -268,6 +268,134 @@ strong{color:var(--text);font-weight:600}
 .calc-row.total span:first-child{color:var(--text);font-weight:700}
 .calc-row.total span:last-child{color:var(--green);font-size:1.05rem;font-weight:800}
 
+/* === CARTES EXPANDABLES AVEC BRANCHES === */
+.platforms-cta-expanded{display:flex;flex-direction:column;gap:1rem;margin:2rem 0}
+
+.card-expand{
+  background:var(--surface);border:1px solid #bfdbfe;
+  border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .3s ease,border-color .3s ease;
+}
+.card-expand:hover{box-shadow:var(--shadow-lg)}
+
+.card-expand-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 1.5rem;cursor:pointer;
+  transition:background .2s ease;
+  user-select:none;
+}
+.card-expand-header:hover{background:#eff6ff}
+
+.card-expand-header-left{display:flex;align-items:center;gap:1rem}
+.card-expand-emoji{font-size:1.5rem;line-height:1}
+.card-expand-title{font-family:var(--font-display);font-weight:700;font-size:.95rem;color:var(--text)}
+.card-expand-sub{font-size:.75rem;color:var(--text2);font-weight:300;margin-top:.15rem}
+
+.card-expand-right{display:flex;align-items:center;gap:.75rem}
+.card-expand-badge{
+  background:#eff6ff;border:1px solid #bfdbfe;
+  color:var(--blue2);font-size:.7rem;font-weight:700;
+  padding:.25rem .6rem;border-radius:20px;font-family:var(--font-display);
+  letter-spacing:.2px;white-space:nowrap;
+}
+.card-expand-badge.gold{background:#fffbeb;border-color:#fde68a;color:#b45309}
+
+.card-expand-chevron{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .35s cubic-bezier(.4,0,.2,1),background .2s;
+  flex-shrink:0;
+}
+.card-expand.open .card-expand-chevron{transform:rotate(180deg);background:#eff6ff;border-color:#bfdbfe}
+
+/* La branche */
+.card-expand-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .45s cubic-bezier(.4,0,.2,1);
+}
+.card-expand.open .card-expand-body{max-height:900px}
+
+.card-expand-inner{
+  padding:0 1.5rem 1.5rem;
+  border-top:1px solid var(--border);
+}
+
+.card-branch{
+  display:flex;gap:0;margin-top:1.25rem;
+}
+.branch-line{
+  display:flex;flex-direction:column;align-items:center;
+  padding-right:1.25rem;flex-shrink:0;
+}
+.branch-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue-dark),var(--blue));
+  border:2px solid #fff;box-shadow:0 0 0 2px var(--blue);
+  flex-shrink:0;margin-top:3px;
+}
+.branch-dot.gold{background:linear-gradient(135deg,#b45309,var(--gold));box-shadow:0 0 0 2px var(--gold)}
+.branch-vert{flex:1;width:2px;background:linear-gradient(to bottom,var(--blue),transparent);margin-top:6px;min-height:20px}
+.branch-vert.gold{background:linear-gradient(to bottom,var(--gold),transparent)}
+
+.branch-content{flex:1;display:flex;flex-direction:column;gap:1rem}
+
+.branch-item{
+  background:var(--surface2);border-radius:10px;padding:1rem 1.1rem;
+  border-left:3px solid var(--blue);
+  transition:all .2s;
+}
+.branch-item:hover{background:#eff6ff;border-left-color:var(--blue2)}
+.branch-item.gold-item{border-left-color:var(--gold)}
+.branch-item.gold-item:hover{background:#fffbeb}
+
+.branch-item-title{font-family:var(--font-display);font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:.3rem;display:flex;align-items:center;gap:.4rem}
+.branch-item-desc{font-size:.78rem;color:var(--text2);font-weight:300;line-height:1.6}
+
+.card-expand-cta{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:linear-gradient(135deg,var(--blue-dark),var(--blue));
+  color:#fff;padding:.6rem 1.2rem;border-radius:8px;
+  font-family:var(--font-display);font-size:.78rem;font-weight:600;
+  text-decoration:none;transition:all .2s;
+  box-shadow:0 2px 8px rgba(59,130,246,0.3);
+  margin-top:1rem;
+}
+.card-expand-cta:hover{box-shadow:0 4px 14px rgba(59,130,246,0.45);transform:translateY(-1px)}
+.card-expand-cta.gold-cta{
+  background:linear-gradient(135deg,#b45309,var(--gold));
+  box-shadow:0 2px 8px rgba(217,119,6,0.3);
+}
+.card-expand-cta.gold-cta:hover{box-shadow:0 4px 14px rgba(217,119,6,0.45)}
+
+/* Embed YouTube dans les cartes */
+.card-video-wrap{
+  position:relative;width:100%;padding-top:56.25%;
+  border-radius:10px;overflow:hidden;
+  background:#000;margin-top:1rem;
+  box-shadow:0 4px 16px rgba(0,0,0,0.15);
+}
+.card-video-wrap iframe{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  border:none;border-radius:10px;
+}
+
+body.dark-mode .card-expand{background:var(--surface)!important;border-color:var(--border)!important}
+body.dark-mode .card-expand-header:hover{background:var(--surface2)!important}
+body.dark-mode .card-expand-badge{background:rgba(59,130,246,0.1)!important;border-color:rgba(59,130,246,0.25)!important}
+body.dark-mode .card-expand-badge.gold{background:rgba(217,119,6,0.07)!important;border-color:rgba(217,119,6,0.25)!important}
+body.dark-mode .card-expand-chevron{background:var(--surface2)!important}
+body.dark-mode .card-expand.open .card-expand-chevron{background:rgba(59,130,246,0.1)!important;border-color:rgba(59,130,246,0.3)!important}
+body.dark-mode .branch-item{background:var(--surface2)!important}
+body.dark-mode .branch-item:hover{background:rgba(59,130,246,0.08)!important}
+body.dark-mode .branch-item.gold-item:hover{background:rgba(217,119,6,0.07)!important}
+
+@media(max-width:600px){
+  .card-expand-header{padding:1rem 1.1rem}
+  .card-expand-inner{padding:0 1.1rem 1.1rem}
+}
+
 .related{padding:3rem 0;border-top:1px solid var(--border)}
 .related h2{margin-top:0}
 .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
@@ -524,27 +652,163 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 
     <h2>Par où commencer — Les 4 inscriptions à faire maintenant</h2>
 
-    <div class="platforms-cta">
-      <a href="https://fr.igraal.com/parrainage?parrain=AG_5aa764fad8df6" target="_blank" rel="nofollow noopener noreferrer" class="platform-cta">
-        <div class="platform-name">💰 iGraal</div>
-        <div class="platform-desc">N°1 France · 1700+ marchands · Jusqu'à 15% cashback</div>
-        <span class="platform-btn">S'inscrire gratuitement →</span>
+    <div class="platforms-cta-expanded">
+
+      <!-- IGRAAL -->
+      <div class="card-expand" id="card-igraal">
+        <div class="card-expand-header" onclick="toggleCard('card-igraal')">
+          <div class="card-expand-header-left">
+            <div class="card-expand-emoji">💰</div>
+            <div>
+              <div class="card-expand-title">iGraal</div>
+              <div class="card-expand-sub">N°1 en France · 1700+ marchands · Jusqu'à 15% cashback</div>
+            </div>
+          </div>
+          <div class="card-expand-right">
+            <div class="card-expand-badge">~54€/an</div>
+            <div class="card-expand-chevron">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="card-expand-body">
+          <div class="card-expand-inner">
+            <div class="card-branch">
+              <div class="branch-line">
+                <div class="branch-dot"></div>
+                <div class="branch-vert"></div>
+              </div>
+              <div class="branch-content">
+                <div class="branch-item">
+                  <div class="branch-item-title">🏪 Le plus grand réseau marchand</div>
+                  <div class="branch-item-desc">iGraal couvre <strong>plus de 1700 marchands</strong> partenaires en France : Amazon, Fnac, Cdiscount, Nike, Sephora, ASOS, Booking.com, etc. Presque tous vos sites habituels sont référencés avec un taux de cashback compétitif.</div>
+                </div>
+                <div class="branch-item">
+                  <div class="branch-item-title">🎁 Cartes cadeaux à prix réduit</div>
+                  <div class="branch-item-desc">La fonctionnalité phare d'iGraal : acheter des <strong>cartes cadeaux Amazon, Fnac ou Nike à -4 à -8%</strong> en dessous de leur valeur faciale. Combinez ça avec le cashback habituel pour doubler vos économies sur chaque commande.</div>
+                </div>
+                <div class="branch-item">
+                  <div class="branch-item-title">💸 Taux jusqu'à 15%</div>
+                  <div class="branch-item-desc">Le taux moyen tourne autour de <strong>3 à 5%</strong> sur les grandes enseignes, mais certains marchands (mode, beauté, voyages) peuvent monter bien plus haut. iGraal est le meilleur choix pour les gros achats ponctuels.</div>
+                </div>
+                <div class="card-video-wrap">
+                  <iframe src="https://www.youtube.com/embed/Pp4Lmxy4LAY" title="Tutoriel iGraal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <a href="https://fr.igraal.com/parrainage?parrain=AG_5aa764fad8df6" target="_blank" rel="nofollow noopener noreferrer" class="card-expand-cta">S'inscrire sur iGraal gratuitement →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EBUYCLUB -->
+      <div class="card-expand" id="card-ebuy">
+        <div class="card-expand-header" onclick="toggleCard('card-ebuy')">
+          <div class="card-expand-header-left">
+            <div class="card-expand-emoji">🛒</div>
+            <div>
+              <div class="card-expand-title">eBuyClub</div>
+              <div class="card-expand-sub">3000+ marchands · Codes promo cumulables avec le cashback</div>
+            </div>
+          </div>
+          <div class="card-expand-right">
+            <div class="card-expand-badge">~18€/an</div>
+            <div class="card-expand-chevron">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="card-expand-body">
+          <div class="card-expand-inner">
+            <div class="card-branch">
+              <div class="branch-line">
+                <div class="branch-dot"></div>
+                <div class="branch-vert"></div>
+              </div>
+              <div class="branch-content">
+                <div class="branch-item">
+                  <div class="branch-item-title">🔢 3000+ marchands — le catalogue le plus large</div>
+                  <div class="branch-item-desc">eBuyClub propose le <strong>plus grand nombre de marchands partenaires</strong> des trois plateformes. Si vous ne trouvez pas votre site favori sur iGraal ou Poulpeo, il sera presque certainement sur eBuyClub.</div>
+                </div>
+                <div class="branch-item">
+                  <div class="branch-item-title">🏷️ Codes promo cumulables</div>
+                  <div class="branch-item-desc">La vraie valeur ajoutée d'eBuyClub : leurs <strong>codes promo exclusifs sont cumulables avec le cashback</strong>. Sur d'autres plateformes, les codes promo désactivent le cashback. Ici, vous bénéficiez des deux simultanément — une économie double à chaque achat.</div>
+                </div>
+                <div class="branch-item">
+                  <div class="branch-item-title">🧩 Extension navigateur automatique</div>
+                  <div class="branch-item-desc">L'extension Chrome/Firefox d'eBuyClub <strong>détecte automatiquement</strong> quand vous visitez un site partenaire et vous propose d'activer le cashback. Plus besoin de penser à passer par la plateforme avant d'acheter.</div>
+                </div>
+                <div class="card-video-wrap">
+                  <iframe src="https://www.youtube.com/embed/UIxjtW2z8yM" title="Tutoriel eBuyClub" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <a href="https://www.ebuyclub.com/inscription?parrain=Catmonangecm1" target="_blank" rel="nofollow noopener noreferrer" class="card-expand-cta">S'inscrire sur eBuyClub gratuitement →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- POULPEO -->
+      <div class="card-expand" id="card-poulpeo">
+        <div class="card-expand-header" onclick="toggleCard('card-poulpeo')">
+          <div class="card-expand-header-left">
+            <div class="card-expand-emoji">⚡</div>
+            <div>
+              <div class="card-expand-title">Poulpeo</div>
+              <div class="card-expand-sub">App mobile · 1M membres · 4,5/5 Trustpilot</div>
+            </div>
+          </div>
+          <div class="card-expand-right">
+            <div class="card-expand-badge">~15€/an</div>
+            <div class="card-expand-chevron">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="card-expand-body">
+          <div class="card-expand-inner">
+            <div class="card-branch">
+              <div class="branch-line">
+                <div class="branch-dot"></div>
+                <div class="branch-vert"></div>
+              </div>
+              <div class="branch-content">
+                <div class="branch-item">
+                  <div class="branch-item-title">📱 L'app mobile la mieux conçue</div>
+                  <div class="branch-item-desc">Poulpeo brille par la <strong>qualité de son application mobile</strong>. Interface claire, navigation fluide, cashback activable en deux taps directement depuis votre smartphone. Idéal si vous faites beaucoup d'achats depuis le mobile.</div>
+                </div>
+                <div class="branch-item">
+                  <div class="branch-item-title">🔔 Notifications intelligentes</div>
+                  <div class="branch-item-desc">Poulpeo envoie des <strong>rappels automatiques</strong> quand vous visitez un site partenaire sans avoir activé le cashback. Résultat : vous ne manquez plus jamais une occasion d'économiser, même quand vous l'oubliez.</div>
+                </div>
+                <div class="branch-item">
+                  <div class="branch-item-title">✅ Validation rapide et fiable</div>
+                  <div class="branch-item-desc">Les gains sont <strong>validés et versés plus rapidement</strong> que la concurrence. Poulpeo est également transparent sur les délais de validation par marchand, ce qui vous permet de savoir précisément quand vous serez crédité.</div>
+                </div>
+                <div class="card-video-wrap">
+                  <iframe src="https://www.youtube.com/embed/WEiO05fuxu4" title="Tutoriel Poulpeo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <a href="https://www.poulpeo.com/p/Mva1ab" target="_blank" rel="nofollow noopener noreferrer" class="card-expand-cta">S'inscrire sur Poulpeo gratuitement →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOURSOBANK (gold, sans branche expandable — CTA direct) -->
+      <a href="https://bour.so/p/soDqAOA0NCL" target="_blank" rel="nofollow noopener noreferrer" class="platform-cta gold-border" style="padding:1.25rem 1.5rem">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
+          <div style="display:flex;align-items:center;gap:1rem">
+            <div style="font-size:1.5rem">🏦</div>
+            <div>
+              <div class="platform-name">BoursoBank — Prime 150€</div>
+              <div class="platform-desc">Carte gratuite sans condition de revenus · Banque N°1 satisfaction client France · Prime unique à l'ouverture</div>
+            </div>
+          </div>
+          <span class="platform-btn gold-btn">Obtenir ma prime 150€ →</span>
+        </div>
       </a>
-      <a href="https://www.ebuyclub.com/inscription?parrain=Catmonangecm1" target="_blank" rel="nofollow noopener noreferrer" class="platform-cta">
-        <div class="platform-name">🛒 eBuyClub</div>
-        <div class="platform-desc">3000+ marchands · Codes promo cumulables</div>
-        <span class="platform-btn">S'inscrire gratuitement →</span>
-      </a>
-      <a href="https://www.poulpeo.com/p/Mva1ab" target="_blank" rel="nofollow noopener noreferrer" class="platform-cta">
-        <div class="platform-name">⚡ Poulpeo</div>
-        <div class="platform-desc">App mobile · 1M membres · 4,5/5 Trustpilot</div>
-        <span class="platform-btn">S'inscrire gratuitement →</span>
-      </a>
-      <a href="https://bour.so/p/soDqAOA0NCL" target="_blank" rel="nofollow noopener noreferrer" class="platform-cta gold-border">
-        <div class="platform-name">🏦 BoursoBank</div>
-        <div class="platform-desc">Carte gratuite · Prime 150€ · Banque N°1 France</div>
-        <span class="platform-btn gold-btn">Obtenir ma prime 150€ →</span>
-      </a>
+
     </div>
 
     <div class="info-box success">
@@ -629,6 +893,17 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem
 </div>
 
 <script>
+  // Toggle cartes expandables
+  function toggleCard(id) {
+    const card = document.getElementById(id);
+    if (!card) return;
+    const isOpen = card.classList.contains('open');
+    // Ferme toutes les cartes
+    document.querySelectorAll('.card-expand').forEach(c => c.classList.remove('open'));
+    // Ouvre si elle était fermée
+    if (!isOpen) card.classList.add('open');
+  }
+
   // Dark mode
   function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
