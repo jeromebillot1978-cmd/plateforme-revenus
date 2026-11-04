@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://plateforme-revenus.vercel.app/sitemap.xml
