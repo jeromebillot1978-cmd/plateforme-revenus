@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "bon-plan-et-reduction.vercel.app" }],
+      "destination": "https://plateforme-revenus.vercel.app/$1",
+      "permanent": true
+    }
+  ]
+}
