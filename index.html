@@ -325,8 +325,129 @@ body.dark-mode .sim-box{background:linear-gradient(135deg,#1e3a8a,#1d4ed8)}
   .hero.home{padding:3rem 1rem 2.5rem}
   .sim-box{padding:1.75rem 1.1rem}
 }
+
+/* =====================================================
+   AMÉLIORATIONS UX / CONVERSION (accueil, nov. 2026)
+   ===================================================== */
+html{scroll-padding-top:calc(var(--hh,69px) + 60px)}
+#faq{scroll-margin-top:0}
+
+/* Sommaire flottant */
+.anchors{position:fixed;left:0;right:0;top:var(--hh,69px);z-index:99;background:var(--header-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);box-shadow:0 8px 20px rgba(15,23,42,.06);transform:translateY(-110%);opacity:0;visibility:hidden;transition:transform .3s ease,opacity .3s ease,visibility 0s linear .3s}
+.anchors.show{transform:none;opacity:1;visibility:visible;transition:transform .3s ease,opacity .3s ease,visibility 0s}
+html:not(.js) .anchors{position:sticky;transform:none;opacity:1;visibility:visible}
+.anchors ul{position:relative;list-style:none;max-width:900px;margin:0 auto;padding:.55rem 2rem;display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.anchors ul::-webkit-scrollbar{display:none}
+.anchors li:first-child{margin-left:auto}
+.anchors li:last-child{margin-right:auto}
+.anchors a{display:inline-flex;align-items:center;white-space:nowrap;padding:.42rem .95rem;border-radius:20px;background:var(--surface);border:1px solid var(--border);color:var(--text2);font:600 .8rem var(--font);text-decoration:none;transition:background .2s,color .2s,border-color .2s,box-shadow .2s}
+.anchors a:hover{border-color:var(--blue);color:var(--blue)}
+body.dark-mode .anchors a:hover{color:#60a5fa}
+.anchors a.on,body.dark-mode .anchors a.on{background:linear-gradient(135deg,var(--blue-dark),var(--blue));border-color:transparent;color:#fff;box-shadow:0 2px 8px rgba(37,99,235,.3)}
+
+/* Pastille logo (logo réel si disponible, sinon initiale) */
+.lg{--s:34px;position:relative;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:var(--s);height:var(--s);border-radius:10px;background:#fff;border:1px solid var(--border);overflow:hidden;vertical-align:middle}
+.lg::before{content:attr(data-i);font:800 calc(var(--s)*.42) var(--font);color:var(--blue2);transition:opacity .3s}
+.lg img{position:absolute;inset:0;margin:auto;width:70%;height:70%;object-fit:contain;opacity:0;transition:opacity .35s}
+.lg.ok img{opacity:1}
+.lg.ok::before{opacity:0}
+body.dark-mode .lg{border-color:rgba(255,255,255,.14)}
+
+/* Hero */
+.hero.home p.lead{font:600 clamp(1.05rem,2.4vw,1.22rem)/1.5 var(--font);color:var(--text);max-width:620px;margin:0 auto 1rem;letter-spacing:-.2px}
+.hero.home .brands-t{font-size:.72rem;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin:2rem auto .7rem;line-height:1.4}
+.brands{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;max-width:660px;margin:0 auto}
+.brands li{display:inline-flex;align-items:center;gap:.5rem;padding:.3rem .8rem .3rem .3rem;background:var(--surface);border:1px solid var(--border);border-radius:12px;font:600 .8rem var(--font);color:var(--text2);box-shadow:var(--shadow)}
+.brands .lg{--s:28px;border-radius:8px}
+.trust{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:1.25rem auto 0}
+.trust li{display:inline-flex;align-items:center;gap:.4rem;padding:.38rem .85rem;border-radius:20px;background:var(--blue-soft);border:1px solid var(--blue-line);font:700 .74rem var(--font);color:var(--blue2)}
+.trust li:nth-child(3){background:rgba(22,163,74,.08);border-color:rgba(22,163,74,.3);color:var(--green)}
+body.dark-mode .trust li{color:#93c5fd}
+body.dark-mode .trust li:nth-child(3){color:#4ade80}
+.trust svg{width:15px;height:15px;flex-shrink:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;max-width:640px;margin:1.5rem auto 0}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem .75rem;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem}
+.stat strong{height:2.3rem;display:flex;align-items:center;font:800 clamp(1.6rem,4vw,2.1rem)/1 var(--font);letter-spacing:-1px;font-variant-numeric:tabular-nums;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat-ic{height:2.3rem;display:flex;align-items:center;color:var(--blue)}
+body.dark-mode .stat-ic{color:#60a5fa}
+.stat-ic svg{width:1.75rem;height:1.75rem}
+.stat-l{font-size:.75rem;color:var(--text2);line-height:1.35;text-align:center}
+
+/* Mur des marchands : grille visuelle */
+.wall ul{display:grid;grid-template-columns:repeat(6,1fr);gap:.6rem}
+.wall li{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding:.9rem .5rem;border-radius:var(--radius);line-height:1.25;text-align:center;box-shadow:var(--shadow)}
+.wall li .lg{--s:40px}
+
+/* Cashback par marchand : grille visuelle */
+.mlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem}
+.mlist li{display:flex}
+.mlist a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center;padding:.95rem .6rem;border-radius:var(--radius);line-height:1.25}
+.mlist .lg{--s:40px}
+
+/* Logos des plateformes dans les cartes */
+h3.wl{display:flex;align-items:center;gap:.65rem}
+.tile h3.wl .lg{--s:40px}
+.av h3.wl .lg{--s:28px;border-radius:8px}
+
+/* Simulateur interactif */
+.sim-box #bval{font-family:var(--font);font-weight:800;color:#fde68a;font-variant-numeric:tabular-nums}
+.sim-box input[type=range]{-webkit-appearance:none;appearance:none;display:block;margin:0 auto;background:transparent;--p:3.4%}
+.sim-box input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:8px;background:linear-gradient(to right,#fbbf24 0 var(--p),rgba(255,255,255,.25) var(--p) 100%)}
+.sim-box input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;margin-top:-9px;border-radius:50%;background:#fff;border:4px solid #fbbf24;box-shadow:0 2px 8px rgba(0,0,0,.25);transition:transform .15s}
+.sim-box input[type=range]:active::-webkit-slider-thumb{transform:scale(1.12)}
+.sim-box input[type=range]::-moz-range-track{height:8px;border-radius:8px;background:rgba(255,255,255,.25)}
+.sim-box input[type=range]::-moz-range-progress{height:8px;border-radius:8px;background:#fbbf24}
+.sim-box input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid #fbbf24;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.sim-box input[type=range]:focus-visible{outline:3px solid #fff;outline-offset:4px;border-radius:8px}
+.sim-box .sim-scale{display:flex;justify-content:space-between;max-width:520px;margin:.35rem auto 0;font-size:.72rem;color:rgba(255,255,255,.7)}
+.sim-box .sim-res{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:.75rem;max-width:660px;margin:1.6rem auto 0;align-items:stretch}
+.sim-card{display:flex;flex-direction:column;justify-content:center;gap:.3rem;padding:1rem .75rem;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
+.sim-card span{font-size:.75rem;font-weight:500;color:rgba(255,255,255,.82);line-height:1.3}
+.sim-card strong{font:800 clamp(1.25rem,3.4vw,1.55rem)/1.1 var(--font);color:#fff;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.sim-card.hl{background:#fff;border-color:#fff;box-shadow:0 12px 30px rgba(15,23,42,.28);transition:transform .2s ease}
+.sim-card.hl span{color:#475569;font-weight:600}
+.sim-card.hl strong{color:#1e3a8a;font-size:clamp(1.9rem,6vw,2.6rem);letter-spacing:-1px}
+.sim-card.hl.bump{transform:scale(1.035)}
+.sim-box .sim-cta{margin-top:1.6rem;background:#fff;color:var(--blue-dark);box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.sim-box .sim-cta:hover{box-shadow:0 6px 20px rgba(0,0,0,.28)}
+
+/* Ils en parlent */
+.proof-sub{font:700 .78rem var(--font);text-transform:uppercase;letter-spacing:.5px;color:var(--text3);margin:0 0 .85rem}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.pcard{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--blue);border-radius:var(--radius);padding:1.3rem 1.25rem;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
+.pcard:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.pic{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:var(--blue-soft);color:var(--blue);margin-bottom:.8rem}
+body.dark-mode .pic{color:#60a5fa}
+.pic svg{width:20px;height:20px}
+.pcard h3{font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.pcard p{font-size:.85rem;color:var(--text2);font-weight:300;line-height:1.6}
+.pbadges{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:1.25rem}
+.pbadges li{padding:.35rem .85rem;border-radius:20px;background:var(--surface2);border:1px solid var(--border);font:600 .74rem var(--font);color:var(--text2)}
+.temo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.75rem}
+.temo-grid[hidden]{display:none}
+.temo-grid blockquote{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:var(--radius);padding:1.1rem 1.3rem;box-shadow:var(--shadow);font-size:.9rem;color:var(--text2);line-height:1.7}
+.temo-grid blockquote::before{content:"\201C";display:block;height:1.3rem;font:800 2.4rem/1 var(--font);color:var(--blue-line)}
+.temo-grid cite{display:block;margin-top:.6rem;font:700 .8rem var(--font);font-style:normal;color:var(--blue)}
+
+@media(max-width:860px){
+  .wall ul{grid-template-columns:repeat(4,1fr)}
+  .proof-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .anchors ul{padding:.5rem 1rem}
+  .wall ul,.mlist{grid-template-columns:repeat(2,1fr)}
+  .wall li,.mlist a{flex-direction:row;justify-content:flex-start;text-align:left;padding:.6rem .7rem;font-size:.76rem}
+  .wall li .lg,.mlist .lg{--s:32px}
+  .stats{gap:.5rem}
+  .stat{padding:.85rem .35rem}
+  .stat-l{font-size:.68rem}
+  .sim-box .sim-res{grid-template-columns:1fr 1fr}
+  .sim-card.hl{grid-column:1/-1;order:-1}
+  .proof-grid,.temo-grid{grid-template-columns:1fr}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://plateforme-revenus.vercel.app/#site", "url": "https://plateforme-revenus.vercel.app/", "name": "Bon plan et réduction", "inLanguage": "fr-FR"}, {"@type": "WebPage", "@id": "https://plateforme-revenus.vercel.app/#page", "url": "https://plateforme-revenus.vercel.app/", "name": "Cashback & parrainage : 7 bons plans pour gagner de l'argent", "description": "Compare iGraal, eBuyClub, Poulpeo, Widilo, BoursoBank, Macadam et WeWard : cashback, parrainage et récompenses pour marcher. Inscription gratuite.", "inLanguage": "fr-FR", "isPartOf": {"@id": "https://plateforme-revenus.vercel.app/#site"}}, {"@type": "ItemList", "name": "Sites de cashback et de parrainage", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "iGraal", "url": "https://plateforme-revenus.vercel.app/igraal.html"}, {"@type": "ListItem", "position": 2, "name": "eBuyClub", "url": "https://plateforme-revenus.vercel.app/ebuyclub.html"}, {"@type": "ListItem", "position": 3, "name": "Poulpeo", "url": "https://plateforme-revenus.vercel.app/poulpeo.html"}, {"@type": "ListItem", "position": 4, "name": "Widilo", "url": "https://plateforme-revenus.vercel.app/widilo.html"}, {"@type": "ListItem", "position": 5, "name": "BoursoBank", "url": "https://plateforme-revenus.vercel.app/boursobank.html"}, {"@type": "ListItem", "position": 6, "name": "Macadam", "url": "https://plateforme-revenus.vercel.app/macadam.html"}, {"@type": "ListItem", "position": 7, "name": "WeWard", "url": "https://plateforme-revenus.vercel.app/weward.html"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "C'est quoi le cashback ?", "acceptedAnswer": {"@type": "Answer", "text": "Le cashback est un remboursement d'une partie de tes achats en ligne. Tu passes par un site de cashback avant de commander chez un marchand partenaire, et une part de la commission versée par le marchand te revient."}}, {"@type": "Question", "name": "Le cashback est-il vraiment gratuit ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, l'inscription à iGraal, eBuyClub, Poulpeo, Widilo et BoursoBank est gratuite. Tu paies le même prix chez le marchand."}}, {"@type": "Question", "name": "Combien peut-on gagner avec le cashback ?", "acceptedAnswer": {"@type": "Answer", "text": "Cela dépend de tes achats et des taux proposés par chaque marchand, qui varient selon les sites et les périodes. Le simulateur de cette page donne un exemple avec 3 % de cashback."}}, {"@type": "Question", "name": "Qu'est-ce qu'un lien de parrainage ?", "acceptedAnswer": {"@type": "Answer", "text": "C'est un lien personnel qui permet de s'inscrire sur un site en profitant d'une éventuelle offre de bienvenue. Le parrain peut recevoir une récompense, sans surcoût pour toi."}}, {"@type": "Question", "name": "Quel site de cashback choisir ?", "acceptedAnswer": {"@type": "Answer", "text": "Tu peux t'inscrire sur plusieurs sites et comparer le taux proposé pour un même marchand avant chaque achat. Les taux et les marchands diffèrent d'un site à l'autre."}}]}]}</script>
+<script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
 <header class="site-header">
@@ -367,11 +488,41 @@ body.dark-mode .sim-box{background:linear-gradient(135deg,#1e3a8a,#1d4ed8)}
 })();
 </script>
 
+<nav class="anchors" id="anchors" aria-label="Sommaire de la page">
+  <ul>
+    <li><a href="#partenaires">Comparatif Cashback</a></li>
+    <li><a href="#simulateur">Simulateur</a></li>
+    <li><a href="#marchands-cashback">Marchands populaires</a></li>
+    <li><a href="#guides">Guides</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
+
 <section class="hero home">
   <span class="meta-tag eyebrow">💸 Cashback · Parrainage · Marche</span>
   <h1>Tes achats te <span>rapportent</span> enfin</h1>
+  <p class="lead">Comparez les meilleures plateformes cashback et récupérez de l'argent sur vos achats du quotidien.</p>
   <p>Tu achètes déjà en ligne : autant récupérer une partie de l'argent. Inscris-toi avec mes liens : il y a de l'argent à gagner dès l'inscription, selon l'offre de bienvenue en cours sur chaque site.</p>
   <a class="cta" href="#partenaires">Je choisis mon site</a>
+  <p class="brands-t">Souvent partenaires des sites de cashback</p>
+  <ul class="brands" aria-label="Exemples de marchands">
+    <li><span class="lg" data-logo="amazon.fr" data-i="A"></span>Amazon</li>
+    <li><span class="lg" data-logo="fnac.com" data-i="F"></span>Fnac</li>
+    <li><span class="lg" data-logo="cdiscount.com" data-i="C"></span>Cdiscount</li>
+    <li><span class="lg" data-logo="booking.com" data-i="B"></span>Booking</li>
+    <li><span class="lg" data-logo="decathlon.fr" data-i="D"></span>Decathlon</li>
+    <li><span class="lg" data-logo="sephora.fr" data-i="S"></span>Sephora</li>
+  </ul>
+  <ul class="trust" aria-label="Nos engagements">
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>Liens transparents</li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 6a3 3 0 006 0L5 7zM19 7l-3 6a3 3 0 006 0l-3-6z"/></svg>Comparatif indépendant</li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v9h14v-9M12 8S10.5 3 8 3.8 8.5 8 12 8zm0 0s1.5-5 4-4.2S15.5 8 12 8z"/></svg>Inscription gratuite</li>
+  </ul>
+  <div class="stats">
+    <div class="stat"><strong data-count="plateformes">7</strong><span class="stat-l">sites et applis comparés</span></div>
+    <div class="stat"><strong data-count="marchands">15</strong><span class="stat-l">marchands référencés</span></div>
+    <div class="stat"><span class="stat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 11-2.64-6.36L21 8"/><path d="M21 3v5h-5"/></svg></span><span class="stat-l">Mise à jour régulière</span></div>
+  </div>
   <ul class="quicknav"><li><a href="#guides">Guides</a></li><li><a href="#comparatifs">Comparatifs</a></li><li><a href="#guides-pratiques">Guides pratiques</a></li><li><a href="#marchands-cashback">Cashback par marchand</a></li></ul>
   <p class="disclo">Transparence : ces liens sont des liens de parrainage, je peux recevoir une récompense si tu t'inscris, sans surcoût pour toi.</p>
 </section>
@@ -380,7 +531,7 @@ body.dark-mode .sim-box{background:linear-gradient(135deg,#1e3a8a,#1d4ed8)}
 
 <section class="sec wall">
   <h2>Chez tous tes marchands préférés</h2>
-  <ul id="marchands"><li>Amazon</li><li>Fnac</li><li>Darty</li><li>Booking</li><li>Nike</li><li>Zalando</li><li>Sephora</li><li>Decathlon</li><li>Cdiscount</li><li>Boulanger</li><li>Leroy Merlin</li><li>IKEA</li><li>Adidas</li><li>Carrefour</li><li>Intermarché</li><li>Auchan</li><li>Uber Eats</li><li>Yves Rocher</li></ul>
+  <ul id="marchands"><li><span class="lg" data-logo="amazon.fr" data-i="A"></span>Amazon</li><li><span class="lg" data-logo="fnac.com" data-i="F"></span>Fnac</li><li><span class="lg" data-logo="darty.com" data-i="D"></span>Darty</li><li><span class="lg" data-logo="booking.com" data-i="B"></span>Booking</li><li><span class="lg" data-logo="nike.com" data-i="N"></span>Nike</li><li><span class="lg" data-logo="zalando.fr" data-i="Z"></span>Zalando</li><li><span class="lg" data-logo="sephora.fr" data-i="S"></span>Sephora</li><li><span class="lg" data-logo="decathlon.fr" data-i="D"></span>Decathlon</li><li><span class="lg" data-logo="cdiscount.com" data-i="C"></span>Cdiscount</li><li><span class="lg" data-logo="boulanger.com" data-i="B"></span>Boulanger</li><li><span class="lg" data-logo="leroymerlin.fr" data-i="L"></span>Leroy Merlin</li><li><span class="lg" data-logo="ikea.com" data-i="I"></span>IKEA</li><li><span class="lg" data-logo="adidas.fr" data-i="A"></span>Adidas</li><li><span class="lg" data-logo="carrefour.fr" data-i="C"></span>Carrefour</li><li><span class="lg" data-logo="intermarche.com" data-i="I"></span>Intermarché</li><li><span class="lg" data-logo="auchan.fr" data-i="A"></span>Auchan</li><li><span class="lg" data-logo="ubereats.com" data-i="U"></span>Uber Eats</li><li><span class="lg" data-logo="yves-rocher.fr" data-i="Y"></span>Yves Rocher</li></ul>
   <small>Exemples de marchands souvent présents sur les sites de cashback. La liste et les taux varient selon chaque site.</small>
 </section>
 
@@ -388,13 +539,13 @@ body.dark-mode .sim-box{background:linear-gradient(135deg,#1e3a8a,#1d4ed8)}
   <h2>7 sites et applis, 7 façons d'y gagner</h2>
   <p>Clique, inscris-toi, et c'est parti.</p>
   <div class="grid" id="liste">
-<article class="tile"><h3>iGraal</h3><p>Du cashback sur des milliers de boutiques, avec un bonus pour tes premiers achats.</p><details><summary>▶ Voir le tuto vidéo</summary><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/Pp4Lmxy4LAY" title="Tutoriel iGraal" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div><a class="vidlink" href="https://www.youtube.com/watch?v=Pp4Lmxy4LAY" target="_blank" rel="noopener noreferrer">La vidéo ne s'affiche pas ? Ouvre-la sur YouTube</a></details><a href="https://fr.igraal.com/parrainage?parrain=AG_5bd0abf88a6cc&amp;utm_medium=raf&amp;utm_source=refer_friend" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur iGraal</a></article>
-<article class="tile"><h3>eBuyClub</h3><p>Cashback et bons plans chez de nombreux marchands partenaires.</p><details><summary>▶ Voir le tuto vidéo</summary><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/UIxjtW2z8yM" title="Tutoriel eBuyClub" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div><a class="vidlink" href="https://www.youtube.com/watch?v=UIxjtW2z8yM" target="_blank" rel="noopener noreferrer">La vidéo ne s'affiche pas ? Ouvre-la sur YouTube</a></details><a href="https://www.ebuyclub.com/inscription?parrain=Catmonangecm1" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur eBuyClub</a></article>
-<article class="tile"><h3>Poulpeo</h3><p>Cumule du cashback à chaque commande et retire-le facilement.</p><details><summary>▶ Voir le tuto vidéo</summary><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/WEiO05fuxu4" title="Tutoriel Poulpeo" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div><a class="vidlink" href="https://www.youtube.com/watch?v=WEiO05fuxu4" target="_blank" rel="noopener noreferrer">La vidéo ne s'affiche pas ? Ouvre-la sur YouTube</a></details><a href="https://www.poulpeo.com/p/Mva1ab" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur Poulpeo</a></article>
-<article class="tile"><h3>Widilo</h3><p>Du cashback chez de nombreux marchands partenaires, avec une extension pour activer ton cashback en un clic.</p><details><summary>▶ Voir le tuto vidéo</summary><div class="vid short"><iframe src="https://www.youtube-nocookie.com/embed/0rKeIbH_hig" title="Tutoriel Widilo" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div><a class="vidlink" href="https://www.youtube.com/shorts/0rKeIbH_hig" target="_blank" rel="noopener noreferrer">La vidéo ne s'affiche pas ? Ouvre-la sur YouTube</a></details><a href="https://www.widilo.fr/i/JERCAT" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur Widilo</a></article>
-<article class="tile"><h3>BoursoBank</h3><p>La banque en ligne avec une offre de bienvenue pour les nouveaux clients.</p><a href="https://bour.so/p/wAl6fuiEUgV" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur BoursoBank</a></article>
-<article class="tile"><h3>Macadam</h3><p>Rejoins-moi sur Macadam pour voir qui marche le plus ! 🚶💨 C&#x27;est gratuit, et tu peux gagner des récompenses juste en marchant. Inscris-toi avec mon code FM39EV et reçois 1000 Coins immédiatement 🎁</p><a href="https://macadam.app/i/fm39ev?v=1" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur Macadam</a></article>
-<article class="tile"><h3>WeWard</h3><p>Une appli qui te récompense pour marcher, très sympa et facile à utiliser ! Démarre avec 50 Wards directement dans ta cagnotte grâce à mon code de parrainage : SereinGrizzly4922</p><a href="https://wewardapp.go.link/jrcOH?adj_label=SereinGrizzly4922" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur WeWard</a></article>
+<article class="tile"><h3 class="wl"><span class="lg" data-logo="igraal.com" data-i="i"></span>iGraal</h3><p>Du cashback sur des milliers de boutiques, avec un bonus pour tes premiers achats.</p><details><summary>▶ Voir le tuto vidéo</summary><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/Pp4Lmxy4LAY" title="Tutoriel iGraal" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div><a class="vidlink" href="https://www.youtube.com/watch?v=Pp4Lmxy4LAY" target="_blank" rel="noopener noreferrer">La vidéo ne s'affiche pas ? Ouvre-la sur YouTube</a></details><a href="https://fr.igraal.com/parrainage?parrain=AG_5bd0abf88a6cc&amp;utm_medium=raf&amp;utm_source=refer_friend" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur iGraal</a></article>
+<article class="tile"><h3 class="wl"><span class="lg" data-logo="ebuyclub.com" data-i="e"></span>eBuyClub</h3><p>Cashback et bons plans chez de nombreux marchands partenaires.</p><details><summary>▶ Voir le tuto vidéo</summary><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/UIxjtW2z8yM" title="Tutoriel eBuyClub" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div><a class="vidlink" href="https://www.youtube.com/watch?v=UIxjtW2z8yM" target="_blank" rel="noopener noreferrer">La vidéo ne s'affiche pas ? Ouvre-la sur YouTube</a></details><a href="https://www.ebuyclub.com/inscription?parrain=Catmonangecm1" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur eBuyClub</a></article>
+<article class="tile"><h3 class="wl"><span class="lg" data-logo="poulpeo.com" data-i="P"></span>Poulpeo</h3><p>Cumule du cashback à chaque commande et retire-le facilement.</p><details><summary>▶ Voir le tuto vidéo</summary><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/WEiO05fuxu4" title="Tutoriel Poulpeo" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div><a class="vidlink" href="https://www.youtube.com/watch?v=WEiO05fuxu4" target="_blank" rel="noopener noreferrer">La vidéo ne s'affiche pas ? Ouvre-la sur YouTube</a></details><a href="https://www.poulpeo.com/p/Mva1ab" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur Poulpeo</a></article>
+<article class="tile"><h3 class="wl"><span class="lg" data-logo="widilo.fr" data-i="W"></span>Widilo</h3><p>Du cashback chez de nombreux marchands partenaires, avec une extension pour activer ton cashback en un clic.</p><details><summary>▶ Voir le tuto vidéo</summary><div class="vid short"><iframe src="https://www.youtube-nocookie.com/embed/0rKeIbH_hig" title="Tutoriel Widilo" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div><a class="vidlink" href="https://www.youtube.com/shorts/0rKeIbH_hig" target="_blank" rel="noopener noreferrer">La vidéo ne s'affiche pas ? Ouvre-la sur YouTube</a></details><a href="https://www.widilo.fr/i/JERCAT" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur Widilo</a></article>
+<article class="tile"><h3 class="wl"><span class="lg" data-logo="boursobank.com" data-i="B"></span>BoursoBank</h3><p>La banque en ligne avec une offre de bienvenue pour les nouveaux clients.</p><a href="https://bour.so/p/wAl6fuiEUgV" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur BoursoBank</a></article>
+<article class="tile"><h3 class="wl"><span class="lg" data-logo="macadam.app" data-i="M"></span>Macadam</h3><p>Rejoins-moi sur Macadam pour voir qui marche le plus ! 🚶💨 C&#x27;est gratuit, et tu peux gagner des récompenses juste en marchant. Inscris-toi avec mon code FM39EV et reçois 1000 Coins immédiatement 🎁</p><a href="https://macadam.app/i/fm39ev?v=1" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur Macadam</a></article>
+<article class="tile"><h3 class="wl"><span class="lg" data-logo="weward.fr" data-i="W"></span>WeWard</h3><p>Une appli qui te récompense pour marcher, très sympa et facile à utiliser ! Démarre avec 50 Wards directement dans ta cagnotte grâce à mon code de parrainage : SereinGrizzly4922</p><a href="https://wewardapp.go.link/jrcOH?adj_label=SereinGrizzly4922" target="_blank" rel="sponsored noopener noreferrer">M'inscrire sur WeWard</a></article>
 </div>
 </section>
 
@@ -454,41 +605,63 @@ body.dark-mode .sim-box{background:linear-gradient(135deg,#1e3a8a,#1d4ed8)}
 <section class="sec hub" id="marchands-cashback">
   <h2>Cashback par marchand</h2>
   <p>Comment récupérer du cashback chez tes enseignes préférées : conditions, astuces et pièges à éviter, marchand par marchand.</p>
-<div class="mgroup"><h3>Marketplaces et petits prix</h3><ul class="mlist"><li><a href="cashback-amazon.html">Cashback Amazon</a></li><li><a href="cashback-cdiscount.html">Cashback Cdiscount</a></li><li><a href="cashback-temu.html">Cashback Temu</a></li><li><a href="cashback-aliexpress.html">Cashback AliExpress</a></li><li><a href="cashback-shein.html">Cashback Shein</a></li></ul></div>
-<div class="mgroup"><h3>Courses et grande distribution</h3><ul class="mlist"><li><a href="cashback-carrefour.html">Cashback Carrefour</a></li><li><a href="cashback-leclerc.html">Cashback E.Leclerc</a></li><li><a href="cashback-auchan.html">Cashback Auchan</a></li><li><a href="cashback-intermarche.html">Cashback Intermarché</a></li><li><a href="cashback-super-u.html">Cashback Super U</a></li></ul></div>
-<div class="mgroup"><h3>Mode, sport et beauté</h3><ul class="mlist"><li><a href="cashback-nike.html">Cashback Nike</a></li><li><a href="cashback-zalando.html">Cashback Zalando</a></li><li><a href="cashback-sephora.html">Cashback Sephora</a></li><li><a href="cashback-decathlon.html">Cashback Decathlon</a></li></ul></div>
-<div class="mgroup"><h3>Voyage</h3><ul class="mlist"><li><a href="cashback-booking.html">Cashback Booking.com</a></li></ul></div>
+<div class="mgroup"><h3>Marketplaces et petits prix</h3><ul class="mlist"><li><a href="cashback-amazon.html"><span class="lg" data-logo="amazon.fr" data-i="A"></span>Cashback Amazon</a></li><li><a href="cashback-cdiscount.html"><span class="lg" data-logo="cdiscount.com" data-i="C"></span>Cashback Cdiscount</a></li><li><a href="cashback-temu.html"><span class="lg" data-logo="temu.com" data-i="T"></span>Cashback Temu</a></li><li><a href="cashback-aliexpress.html"><span class="lg" data-logo="aliexpress.com" data-i="A"></span>Cashback AliExpress</a></li><li><a href="cashback-shein.html"><span class="lg" data-logo="shein.com" data-i="S"></span>Cashback Shein</a></li></ul></div>
+<div class="mgroup"><h3>Courses et grande distribution</h3><ul class="mlist"><li><a href="cashback-carrefour.html"><span class="lg" data-logo="carrefour.fr" data-i="C"></span>Cashback Carrefour</a></li><li><a href="cashback-leclerc.html"><span class="lg" data-logo="e.leclerc" data-i="E"></span>Cashback E.Leclerc</a></li><li><a href="cashback-auchan.html"><span class="lg" data-logo="auchan.fr" data-i="A"></span>Cashback Auchan</a></li><li><a href="cashback-intermarche.html"><span class="lg" data-logo="intermarche.com" data-i="I"></span>Cashback Intermarché</a></li><li><a href="cashback-super-u.html"><span class="lg" data-logo="coursesu.com" data-i="U"></span>Cashback Super U</a></li></ul></div>
+<div class="mgroup"><h3>Mode, sport et beauté</h3><ul class="mlist"><li><a href="cashback-nike.html"><span class="lg" data-logo="nike.com" data-i="N"></span>Cashback Nike</a></li><li><a href="cashback-zalando.html"><span class="lg" data-logo="zalando.fr" data-i="Z"></span>Cashback Zalando</a></li><li><a href="cashback-sephora.html"><span class="lg" data-logo="sephora.fr" data-i="S"></span>Cashback Sephora</a></li><li><a href="cashback-decathlon.html"><span class="lg" data-logo="decathlon.fr" data-i="D"></span>Cashback Decathlon</a></li></ul></div>
+<div class="mgroup"><h3>Voyage</h3><ul class="mlist"><li><a href="cashback-booking.html"><span class="lg" data-logo="booking.com" data-i="B"></span>Cashback Booking.com</a></li></ul></div>
 </section>
 
 <section class="sec avis">
   <h2>Ce qu'il faut retenir de chaque site</h2>
   <div class="avis-list" id="avis">
-<article class="av"><h3>iGraal</h3><ul><li class="plus">Très large choix de marchands</li><li class="plus">Cartes cadeaux à prix réduit</li></ul><ul><li class="moins">Le taux change selon le marchand et le jour.</li></ul></article>
-<article class="av"><h3>eBuyClub</h3><ul><li class="plus">Codes promo cumulables avec le cashback</li><li class="plus">Extension pour navigateur</li></ul><ul><li class="moins">Vérifie que le marchand est bien listé avant d&#x27;acheter.</li></ul></article>
-<article class="av"><h3>Poulpeo</h3><ul><li class="plus">Application mobile pratique</li><li class="plus">Rappels quand tu visites un marchand partenaire</li></ul><ul><li class="moins">Le cashback est crédité après validation par le marchand.</li></ul></article>
-<article class="av"><h3>Widilo</h3><ul><li class="plus">Extension pour navigateur</li><li class="plus">Retrait possible dès 15 € de cagnotte</li></ul><ul><li class="moins">Le taux change selon le marchand et la période.</li></ul></article>
-<article class="av"><h3>BoursoBank</h3><ul><li class="plus">Carte gratuite</li><li class="plus">Pas de condition de revenus</li></ul><ul><li class="moins">La prime dépend de l&#x27;offre en cours : vérifie-la sur le site.</li></ul></article>
-<article class="av"><h3>Macadam</h3><ul><li class="plus">Gratuit, tu gagnes des récompenses en marchant</li><li class="plus">1000 Coins offerts avec le code FM39EV</li></ul><ul><li class="moins">Les récompenses dépendent de ton nombre de pas et de l&#x27;offre en cours.</li></ul></article>
-<article class="av"><h3>WeWard</h3><ul><li class="plus">Gratuit, facile à utiliser</li><li class="plus">50 Wards offerts avec le code SereinGrizzly4922</li></ul><ul><li class="moins">Les gains dépendent de ton nombre de pas et de l&#x27;offre en cours.</li></ul></article>
+<article class="av"><h3 class="wl"><span class="lg" data-logo="igraal.com" data-i="i"></span>iGraal</h3><ul><li class="plus">Très large choix de marchands</li><li class="plus">Cartes cadeaux à prix réduit</li></ul><ul><li class="moins">Le taux change selon le marchand et le jour.</li></ul></article>
+<article class="av"><h3 class="wl"><span class="lg" data-logo="ebuyclub.com" data-i="e"></span>eBuyClub</h3><ul><li class="plus">Codes promo cumulables avec le cashback</li><li class="plus">Extension pour navigateur</li></ul><ul><li class="moins">Vérifie que le marchand est bien listé avant d&#x27;acheter.</li></ul></article>
+<article class="av"><h3 class="wl"><span class="lg" data-logo="poulpeo.com" data-i="P"></span>Poulpeo</h3><ul><li class="plus">Application mobile pratique</li><li class="plus">Rappels quand tu visites un marchand partenaire</li></ul><ul><li class="moins">Le cashback est crédité après validation par le marchand.</li></ul></article>
+<article class="av"><h3 class="wl"><span class="lg" data-logo="widilo.fr" data-i="W"></span>Widilo</h3><ul><li class="plus">Extension pour navigateur</li><li class="plus">Retrait possible dès 15 € de cagnotte</li></ul><ul><li class="moins">Le taux change selon le marchand et la période.</li></ul></article>
+<article class="av"><h3 class="wl"><span class="lg" data-logo="boursobank.com" data-i="B"></span>BoursoBank</h3><ul><li class="plus">Carte gratuite</li><li class="plus">Pas de condition de revenus</li></ul><ul><li class="moins">La prime dépend de l&#x27;offre en cours : vérifie-la sur le site.</li></ul></article>
+<article class="av"><h3 class="wl"><span class="lg" data-logo="macadam.app" data-i="M"></span>Macadam</h3><ul><li class="plus">Gratuit, tu gagnes des récompenses en marchant</li><li class="plus">1000 Coins offerts avec le code FM39EV</li></ul><ul><li class="moins">Les récompenses dépendent de ton nombre de pas et de l&#x27;offre en cours.</li></ul></article>
+<article class="av"><h3 class="wl"><span class="lg" data-logo="weward.fr" data-i="W"></span>WeWard</h3><ul><li class="plus">Gratuit, facile à utiliser</li><li class="plus">50 Wards offerts avec le code SereinGrizzly4922</li></ul><ul><li class="moins">Les gains dépendent de ton nombre de pas et de l&#x27;offre en cours.</li></ul></article>
 </div>
-  <div class="temo" id="temo" hidden><h3>Ils en parlent</h3></div>
 </section>
 
-<section class="sec sim">
+<section class="sec proof" id="ils-en-parlent">
+  <h2>Ils en parlent</h2>
+  <p id="proofIntro">Ici, uniquement de vrais retours de lecteurs, publiés tels quels : aucun avis inventé. En attendant les premiers témoignages, voici ce sur quoi tu peux compter.</p>
+  <div class="temo-grid" id="temo" hidden></div>
+  <h3 class="proof-sub">Nos engagements</h3>
+  <div class="proof-grid">
+    <article class="pcard"><div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 005.66 0l3-3a4 4 0 00-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 00-5.66 0l-3 3a4 4 0 005.66 5.66l1-1"/></svg></div><h3>Liens signalés</h3><p>Chaque lien de parrainage est indiqué comme tel, et il ne te coûte rien de plus.</p></article>
+    <article class="pcard"><div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v9h14v-9M12 8S10.5 3 8 3.8 8.5 8 12 8zm0 0s1.5-5 4-4.2S15.5 8 12 8z"/></svg></div><h3>Inscription gratuite</h3><p>Les sites et applis présentés sont gratuits à l'inscription, et tu paies le même prix chez le marchand.</p></article>
+    <article class="pcard"><div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2V5z"/><path d="M4 19a2 2 0 002 2h13"/></svg></div><h3>Des guides avant de t'inscrire</h3><p><span data-count="guides">47</span> guides et comparatifs pour comprendre chaque site, ses avantages et ses limites.</p></article>
+  </div>
+  <ul class="pbadges" aria-label="En bref">
+    <li>Aucun avis inventé</li>
+    <li>Liens transparents</li>
+    <li>Contenus indépendants</li>
+    <li>Mise à jour régulière</li>
+  </ul>
+</section>
+
+<section class="sec sim" id="simulateur">
   <div class="sim-box">
     <h2>Combien tu pourrais récupérer ?</h2>
     <small>Simple exemple avec 3 % de cashback : le taux réel varie selon les marchands.</small>
     <label for="budget">Tes achats en ligne par mois : <span id="bval">150</span> €</label>
-    <input id="budget" type="range" min="20" max="1000" step="10" value="150">
-    <div>Sur un an :</div>
-    <div class="amount" id="gain">54 €</div>
+    <input id="budget" type="range" min="50" max="3000" step="10" value="150" aria-valuetext="150 € par mois">
+    <div class="sim-scale" aria-hidden="true"><span>50 €</span><span>3&#8239;000 €</span></div>
+    <div class="sim-res">
+      <div class="sim-card"><span>Budget annuel</span><strong id="sAnnual">1&#8239;800 €</strong></div>
+      <div class="sim-card hl"><span>Cashback annuel estimé</span><strong id="gain">54 €</strong></div>
+      <div class="sim-card"><span>Soit d'économies par mois</span><strong id="sMonth">4,50 €</strong></div>
+    </div>
+    <a class="cta sim-cta" href="#partenaires">Je choisis mon site</a>
   </div>
 </section>
 
 <section class="sec seo">
   <h2>Le cashback, comment ça marche ?</h2>
   <p>Quand tu achètes en ligne, le marchand verse une commission au site de cashback qui t'a redirigé. Ce site t'en reverse une partie : tu paies le même prix et une partie de ta dépense te revient. En t'inscrivant avec un lien de parrainage, tu peux aussi profiter d'une offre de bienvenue, selon les conditions en vigueur sur chaque site.</p>
-  <h2>Questions fréquentes</h2>
+  <h2 id="faq">Questions fréquentes</h2>
   <div class="faq"><details><summary>C'est quoi le cashback ?</summary><p>Le cashback est un remboursement d'une partie de tes achats en ligne. Tu passes par un site de cashback avant de commander chez un marchand partenaire, et une part de la commission versée par le marchand te revient.</p></details><details><summary>Le cashback est-il vraiment gratuit ?</summary><p>Oui, l'inscription à iGraal, eBuyClub, Poulpeo, Widilo et BoursoBank est gratuite. Tu paies le même prix chez le marchand.</p></details><details><summary>Combien peut-on gagner avec le cashback ?</summary><p>Cela dépend de tes achats et des taux proposés par chaque marchand, qui varient selon les sites et les périodes. Le simulateur de cette page donne un exemple avec 3 % de cashback.</p></details><details><summary>Qu'est-ce qu'un lien de parrainage ?</summary><p>C'est un lien personnel qui permet de s'inscrire sur un site en profitant d'une éventuelle offre de bienvenue. Le parrain peut recevoir une récompense, sans surcoût pour toi.</p></details><details><summary>Quel site de cashback choisir ?</summary><p>Tu peux t'inscrire sur plusieurs sites et comparer le taux proposé pour un même marchand avant chaque achat. Les taux et les marchands diffèrent d'un site à l'autre.</p></details></div>
 </section>
 
@@ -499,7 +672,7 @@ body.dark-mode .sim-box{background:linear-gradient(135deg,#1e3a8a,#1d4ed8)}
 Ces liens sont des liens de parrainage : je peux recevoir une récompense si tu t'inscris, et ça ne te coûte rien de plus.</footer>
 
 <script>
-// Vrais témoignages : colle-les ici, ils s'afficheront automatiquement.
+// Vrais témoignages : colle-les ici, ils s'afficheront automatiquement dans la section « Ils en parlent ».
 // Exemple : {texte:"Mon retour d'expérience…",auteur:"Prénom, ville"}
 const temoignages=[];
 if(temoignages.length){
@@ -508,13 +681,90 @@ if(temoignages.length){
     const q=document.createElement("blockquote");q.textContent=x.texte;
     const c=document.createElement("cite");c.textContent=x.auteur;q.appendChild(c);t.appendChild(q);
   });
+  const intro=document.getElementById("proofIntro");
+  if(intro)intro.textContent="De vrais retours de lecteurs, publiés tels quels.";
 }
 const mots=["Amazon","Fnac","Darty","Booking","Nike","Zalando","Sephora","Decathlon","Cdiscount","Boulanger","Leroy Merlin","IKEA","Adidas","Carrefour","Intermarché","Auchan","Uber Eats","Yves Rocher"];
 const seq=mots.map(m=>m+" ✦ ").join("").repeat(3);
 document.getElementById("tape").textContent=seq+seq;
-const b=document.getElementById("budget"),bv=document.getElementById("bval"),g=document.getElementById("gain");
-function maj(){bv.textContent=b.value;g.textContent=Math.round(b.value*12*0.03).toLocaleString("fr-FR")+" €"}
-b.addEventListener("input",maj);maj();
+
+const reduce=!!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+/* ===== Logos (chargement différé, initiale affichée si le logo ne charge pas) =====
+   Pour utiliser tes propres fichiers plus tard, remplace la ligne suivante par :
+   const LOGO_SRC=d=>"/logos/"+d+".png";   (ex. /logos/amazon.fr.png) */
+const LOGO_SRC=d=>"https://www.google.com/s2/favicons?domain="+encodeURIComponent(d)+"&sz=64";
+document.querySelectorAll(".lg[data-logo]").forEach(el=>{
+  const img=document.createElement("img");
+  img.alt="";img.width=64;img.height=64;img.loading="lazy";img.decoding="async";img.referrerPolicy="no-referrer";
+  img.onload=()=>el.classList.add("ok");
+  img.onerror=()=>img.remove();
+  img.src=el.dataset.logoSrc||LOGO_SRC(el.dataset.logo);
+  el.appendChild(img);
+});
+
+/* ===== Compteurs (calculés à partir de la page : toujours à jour) ===== */
+const compte={
+  plateformes:document.querySelectorAll("#liste .tile").length,
+  marchands:document.querySelectorAll("#marchands-cashback .mlist a").length,
+  guides:document.querySelectorAll("#guides .tile,#comparatifs .tile,#guides-pratiques .cards a,#marchands-cashback .mlist a").length
+};
+document.querySelectorAll("[data-count]").forEach(el=>{
+  const n=compte[el.dataset.count];if(!n)return;
+  if(reduce||!el.closest(".stat")){el.textContent=n;return}
+  const t0=performance.now(),D=900;
+  (function step(t){const k=Math.min(1,(t-t0)/D);el.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(step)})(t0);
+});
+
+/* ===== Sommaire flottant ===== */
+(function(){
+  const root=document.documentElement,h=document.querySelector(".site-header"),nav=document.getElementById("anchors"),hero=document.querySelector(".hero.home");
+  if(!nav||!h||!hero)return;
+  const setH=()=>root.style.setProperty("--hh",h.offsetHeight+"px");
+  setH();
+  if("ResizeObserver" in window)new ResizeObserver(setH).observe(h);else addEventListener("resize",setH);
+  if(!("IntersectionObserver" in window)){nav.classList.add("show");return}
+  new IntersectionObserver(([e])=>nav.classList.toggle("show",!e.isIntersecting&&e.boundingClientRect.top<0)).observe(hero);
+  const ul=nav.querySelector("ul"),cible=new Map();
+  nav.querySelectorAll("a").forEach(a=>{const t=document.querySelector(a.getAttribute("href"));if(t)cible.set(t.closest("section")||t,a)});
+  let actif=null;
+  const spy=new IntersectionObserver(es=>{es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const a=cible.get(e.target);if(!a||a===actif)return;
+    if(actif){actif.classList.remove("on");actif.removeAttribute("aria-current")}
+    a.classList.add("on");a.setAttribute("aria-current","location");actif=a;
+    ul.scrollTo({left:a.offsetLeft-(ul.clientWidth-a.offsetWidth)/2,behavior:reduce?"auto":"smooth"});
+  })},{rootMargin:"-45% 0px -50% 0px"});
+  cible.forEach((a,s)=>spy.observe(s));
+})();
+
+/* ===== Simulateur interactif ===== */
+(function(){
+  const b=document.getElementById("budget"),bv=document.getElementById("bval"),g=document.getElementById("gain"),
+        sa=document.getElementById("sAnnual"),sm=document.getElementById("sMonth"),hl=g.closest(".sim-card");
+  const TAUX=0.03; // même taux que celui indiqué dans la FAQ
+  const eur=(v,d)=>v.toLocaleString("fr-FR",{minimumFractionDigits:d,maximumFractionDigits:d})+" €";
+  const etat={a:0,c:0,m:0};let raf=0,tBump=0;
+  const cibleDe=v=>({a:v*12,c:v*12*TAUX,m:v*TAUX});
+  function rendu(){sa.textContent=eur(Math.round(etat.a),0);g.textContent=eur(Math.round(etat.c),0);sm.textContent=eur(etat.m,2)}
+  function maj(anime){
+    const v=+b.value,to=cibleDe(v);
+    bv.textContent=v.toLocaleString("fr-FR");
+    b.style.setProperty("--p",((v-b.min)/(b.max-b.min)*100)+"%");
+    b.setAttribute("aria-valuetext",v.toLocaleString("fr-FR")+" € par mois, soit environ "+Math.round(to.c).toLocaleString("fr-FR")+" € de cashback par an");
+    cancelAnimationFrame(raf);
+    if(!anime||reduce){Object.assign(etat,to);rendu();return}
+    const de={...etat},t0=performance.now(),D=380;
+    (function step(t){
+      const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);
+      for(const c in to)etat[c]=de[c]+(to[c]-de[c])*e;
+      rendu();if(k<1)raf=requestAnimationFrame(step);
+    })(t0);
+    hl.classList.add("bump");clearTimeout(tBump);tBump=setTimeout(()=>hl.classList.remove("bump"),180);
+  }
+  b.addEventListener("input",()=>maj(true));
+  maj(false);
+})();
 </script>
 </body>
 </html>
