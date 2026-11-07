@@ -557,10 +557,33 @@ html:not(.js) .fold-btn{display:none}
 </div>
 </section>
 
-<section class="sec wall">
-  <h2>Chez tous tes marchands préférés</h2>
-  <ul id="marchands"><li><span class="lg" data-logo="amazon.fr" data-i="A"></span>Amazon</li><li><span class="lg" data-logo="fnac.com" data-i="F"></span>Fnac</li><li><span class="lg" data-logo="darty.com" data-i="D"></span>Darty</li><li><span class="lg" data-logo="booking.com" data-i="B"></span>Booking</li><li><span class="lg" data-logo="nike.com" data-i="N"></span>Nike</li><li><span class="lg" data-logo="zalando.fr" data-i="Z"></span>Zalando</li><li><span class="lg" data-logo="sephora.fr" data-i="S"></span>Sephora</li><li><span class="lg" data-logo="decathlon.fr" data-i="D"></span>Decathlon</li><li><span class="lg" data-logo="cdiscount.com" data-i="C"></span>Cdiscount</li><li><span class="lg" data-logo="boulanger.com" data-i="B"></span>Boulanger</li><li><span class="lg" data-logo="leroymerlin.fr" data-i="L"></span>Leroy Merlin</li><li><span class="lg" data-logo="ikea.com" data-i="I"></span>IKEA</li><li><span class="lg" data-logo="adidas.fr" data-i="A"></span>Adidas</li><li><span class="lg" data-logo="carrefour.fr" data-i="C"></span>Carrefour</li><li><span class="lg" data-logo="intermarche.com" data-i="I"></span>Intermarché</li><li><span class="lg" data-logo="auchan.fr" data-i="A"></span>Auchan</li><li><span class="lg" data-logo="ubereats.com" data-i="U"></span>Uber Eats</li><li><span class="lg" data-logo="yves-rocher.fr" data-i="Y"></span>Yves Rocher</li></ul>
-  <small>Exemples de marchands souvent présents sur les sites de cashback. La liste et les taux varient selon chaque site.</small>
+<section class="sec sim" id="simulateur">
+  <div class="sim-box">
+    <h2>Combien tu pourrais récupérer ?</h2>
+    <small>Simple exemple avec 3 % de cashback : le taux réel varie selon les marchands.</small>
+    <label for="budget">Tes achats en ligne par mois : <span id="bval">150</span> €</label>
+    <input id="budget" type="range" min="50" max="3000" step="10" value="150" aria-valuetext="150 € par mois">
+    <div class="sim-scale" aria-hidden="true"><span>50 €</span><span>3&#8239;000 €</span></div>
+    <div class="sim-res">
+      <div class="sim-card"><span>Budget annuel</span><strong id="sAnnual">1&#8239;800 €</strong></div>
+      <div class="sim-card hl"><span>Cashback annuel estimé</span><strong id="gain">54 €</strong></div>
+      <div class="sim-card"><span>Soit d'économies par mois</span><strong id="sMonth">4,50 €</strong></div>
+    </div>
+    <a class="cta sim-cta" href="#partenaires">Je choisis mon site</a>
+  </div>
+</section>
+
+<section class="sec fold guides" id="comparatifs">
+  <h2>Quelle plateforme choisir ? Nos comparatifs</h2>
+  <p>Tu hésites entre deux sites ou deux applis ? Nos comparatifs détaillés t'aident à choisir, ou à combiner les meilleurs.</p>
+  <div class="grid">
+<article class="tile"><span class="tag">Comparatif</span><h3>iGraal vs Widilo</h3><p>Catalogue géant contre extension en un clic et retrait dès 15 € : lequel choisir ?</p><a href="igraal-vs-widilo.html">Lire le comparatif</a></article>
+<article class="tile"><span class="tag">Comparatif</span><h3>eBuyClub vs Poulpeo</h3><p>Codes promo cumulables contre appli et rappels : le duel décortiqué.</p><a href="ebuyclub-vs-poulpeo.html">Lire le comparatif</a></article>
+<article class="tile"><span class="tag">Comparatif</span><h3>WeWard vs Macadam</h3><p>Wards contre Coins : laquelle des deux applis récompense le mieux tes pas ?</p><a href="weward-vs-macadam.html">Lire le comparatif</a></article>
+<article class="more tile"><span class="tag">Comparatif</span><h3>Meilleur site de cashback</h3><p>iGraal, eBuyClub, Poulpeo, Widilo : le comparatif pour trouver ton site idéal.</p><a href="meilleur-site-cashback.html">Lire le comparatif</a></article>
+<article class="more tile"><span class="tag">Comparatif</span><h3>Meilleure application pour marcher</h3><p>Comment être récompensé pour tes pas : comparatif, gains réalistes et codes offerts.</p><a href="meilleure-application-pour-marcher.html">Lire le comparatif</a></article>
+</div>
+<div class="fold-actions"><button type="button" class="cta fold-btn" aria-expanded="false" data-more="Voir tous les comparatifs" data-less="Voir moins">Voir tous les comparatifs</button></div>
 </section>
 
 <section class="sec fold guides" id="guides">
@@ -575,20 +598,7 @@ html:not(.js) .fold-btn{display:none}
 <article class="more tile"><span class="tag">Appli marche</span><h3>Guide Macadam</h3><p>Tes pas deviennent des Coins : fonctionnement, astuces et 1000 Coins offerts.</p><a href="macadam.html">Lire le guide Macadam</a></article>
 <article class="more tile"><span class="tag">Appli marche</span><h3>Guide WeWard</h3><p>Marche, cumule des Wards et échange-les : le guide WeWard avec 50 Wards offerts.</p><a href="weward.html">Lire le guide WeWard</a></article>
 </div>
-<div class="fold-actions"><button type="button" class="cta fold-btn" aria-expanded="false" data-more="Voir tout (7)" data-less="Voir moins">Voir tout (7)</button></div>
-</section>
-
-<section class="sec fold guides" id="comparatifs">
-  <h2>Quelle plateforme choisir ? Nos comparatifs</h2>
-  <p>Tu hésites entre deux sites ou deux applis ? Nos comparatifs détaillés t'aident à choisir, ou à combiner les meilleurs.</p>
-  <div class="grid">
-<article class="tile"><span class="tag">Comparatif</span><h3>iGraal vs Widilo</h3><p>Catalogue géant contre extension en un clic et retrait dès 15 € : lequel choisir ?</p><a href="igraal-vs-widilo.html">Lire le comparatif</a></article>
-<article class="tile"><span class="tag">Comparatif</span><h3>eBuyClub vs Poulpeo</h3><p>Codes promo cumulables contre appli et rappels : le duel décortiqué.</p><a href="ebuyclub-vs-poulpeo.html">Lire le comparatif</a></article>
-<article class="tile"><span class="tag">Comparatif</span><h3>WeWard vs Macadam</h3><p>Wards contre Coins : laquelle des deux applis récompense le mieux tes pas ?</p><a href="weward-vs-macadam.html">Lire le comparatif</a></article>
-<article class="more tile"><span class="tag">Comparatif</span><h3>Meilleur site de cashback</h3><p>iGraal, eBuyClub, Poulpeo, Widilo : le comparatif pour trouver ton site idéal.</p><a href="meilleur-site-cashback.html">Lire le comparatif</a></article>
-<article class="more tile"><span class="tag">Comparatif</span><h3>Meilleure application pour marcher</h3><p>Comment être récompensé pour tes pas : comparatif, gains réalistes et codes offerts.</p><a href="meilleure-application-pour-marcher.html">Lire le comparatif</a></article>
-</div>
-<div class="fold-actions"><button type="button" class="cta fold-btn" aria-expanded="false" data-more="Voir tout (5)" data-less="Voir moins">Voir tout (5)</button></div>
+<div class="fold-actions"><button type="button" class="cta fold-btn" aria-expanded="false" data-more="Voir tous les guides" data-less="Voir moins">Voir tous les guides</button></div>
 </section>
 
 <section class="sec fold hub" id="guides-pratiques">
@@ -616,7 +626,7 @@ html:not(.js) .fold-btn{display:none}
 <a href="fruits-et-legumes-de-saison.html" class="more"><em>Courses</em><strong>Fruits et légumes de saison</strong><span>Le calendrier mois par mois pour acheter moins cher et manger meilleur.</span></a>
 <a href="dlc-ddm-difference.html" class="more"><em>Anti-gaspi</em><strong>DLC et DDM : quelle différence ?</strong><span>« Jusqu'au » ou « de préférence avant » : bien lire les dates pour gaspiller moins.</span></a>
 </div>
-<div class="fold-actions"><button type="button" class="cta fold-btn" aria-expanded="false" data-more="Voir tout (20)" data-less="Voir moins">Voir tout (20)</button></div>
+<div class="fold-actions"><button type="button" class="cta fold-btn" aria-expanded="false" data-more="Voir tous les guides pratiques" data-less="Voir moins">Voir tous les guides pratiques</button></div>
 </section>
 
 <section class="sec fold hub" id="marchands-cashback">
@@ -629,7 +639,7 @@ html:not(.js) .fold-btn{display:none}
 <div class="more mgroup"><h3>Mode, sport et beauté</h3><ul class="mlist"><li><a href="cashback-nike.html"><span class="lg" data-logo="nike.com" data-i="N"></span>Cashback Nike</a></li><li><a href="cashback-zalando.html"><span class="lg" data-logo="zalando.fr" data-i="Z"></span>Cashback Zalando</a></li><li><a href="cashback-sephora.html"><span class="lg" data-logo="sephora.fr" data-i="S"></span>Cashback Sephora</a></li><li><a href="cashback-decathlon.html"><span class="lg" data-logo="decathlon.fr" data-i="D"></span>Cashback Decathlon</a></li><li><a href="cashback-adidas.html"><span class="lg" data-logo="adidas.fr" data-i="A"></span>Cashback adidas</a></li><li><a href="cashback-la-redoute.html"><span class="lg" data-logo="laredoute.fr" data-i="L"></span>Cashback La Redoute</a></li><li><a href="cashback-nocibe.html"><span class="lg" data-logo="nocibe.fr" data-i="N"></span>Cashback Nocibé</a></li><li><a href="cashback-yves-rocher.html"><span class="lg" data-logo="yves-rocher.fr" data-i="Y"></span>Cashback Yves Rocher</a></li></ul></div>
 <div class="more mgroup"><h3>Voyage</h3><ul class="mlist"><li><a href="cashback-booking.html"><span class="lg" data-logo="booking.com" data-i="B"></span>Cashback Booking.com</a></li></ul></div>
 <div class="more mgroup"><h3>Livraison de repas</h3><ul class="mlist"><li><a href="cashback-uber-eats.html"><span class="lg" data-logo="ubereats.com" data-i="U"></span>Cashback Uber Eats</a></li><li><a href="cashback-deliveroo.html"><span class="lg" data-logo="deliveroo.fr" data-i="D"></span>Cashback Deliveroo</a></li></ul></div>
-<div class="fold-actions"><button type="button" class="cta fold-btn" aria-expanded="false" data-more="Voir tout (26)" data-less="Voir moins">Voir tout (26)</button></div>
+<div class="fold-actions"><button type="button" class="cta fold-btn" aria-expanded="false" data-more="Voir tous les marchands" data-less="Voir moins">Voir tous les marchands</button></div>
 </section>
 
 <section class="sec fold hub" id="cartes-cadeaux">
@@ -642,7 +652,7 @@ html:not(.js) .fold-btn{display:none}
 <div class="more mgroup"><h3>Voyage</h3><ul class="mlist"><li><a href="carte-cadeau-booking.html"><span class="lg" data-logo="booking.com" data-i="B"></span>Carte cadeau Booking.com</a></li></ul></div>
 <div class="more mgroup"><h3>Livraison de repas</h3><ul class="mlist"><li><a href="carte-cadeau-uber-eats.html"><span class="lg" data-logo="ubereats.com" data-i="U"></span>Carte cadeau Uber Eats</a></li><li><a href="carte-cadeau-deliveroo.html"><span class="lg" data-logo="deliveroo.fr" data-i="D"></span>Carte cadeau Deliveroo</a></li></ul></div>
 <div class="more mgroup"><h3>Courses et grande distribution</h3><ul class="mlist"><li><a href="carte-cadeau-carrefour.html"><span class="lg" data-logo="carrefour.fr" data-i="C"></span>Carte cadeau Carrefour</a></li><li><a href="carte-cadeau-leclerc.html"><span class="lg" data-logo="e.leclerc" data-i="E"></span>Carte cadeau E.Leclerc</a></li><li><a href="carte-cadeau-intermarche.html"><span class="lg" data-logo="intermarche.com" data-i="I"></span>Carte cadeau Intermarché</a></li><li><a href="carte-cadeau-auchan.html"><span class="lg" data-logo="auchan.fr" data-i="A"></span>Carte cadeau Auchan</a></li><li><a href="carte-cadeau-super-u.html"><span class="lg" data-logo="coursesu.com" data-i="U"></span>Carte cadeau Super U</a></li></ul></div>
-<div class="fold-actions"><a class="cta" href="cartes-cadeaux-cashback.html">Voir tout (23)</a></div>
+<div class="fold-actions"><button type="button" class="cta fold-btn" aria-expanded="false" data-more="Voir toutes les cartes cadeaux" data-less="Voir moins">Voir toutes les cartes cadeaux</button></div>
 </section>
 
 <section class="sec fold avis">
@@ -659,7 +669,13 @@ html:not(.js) .fold-btn{display:none}
 <article class="more av"><h3 class="wl"><span class="lg" data-logo="couponnetwork.fr" data-i="C"></span>Coupon Network</h3><ul><li class="plus">Coupons de réduction et offres de remboursement sur les courses</li><li class="plus">Code de parrainage 7JMS1C</li></ul><ul><li class="moins">Les offres disponibles dépendent des produits et de l&#x27;offre en cours.</li></ul></article>
 <article class="more av"><h3 class="wl"><span class="lg" data-logo="fidme.com" data-i="F"></span>Fidme Courses</h3><ul><li class="plus">Crée, gère et partage tes listes de courses</li></ul><ul><li class="moins">Les fonctionnalités peuvent évoluer : vérifie-les dans l&#x27;application.</li></ul></article>
 </div>
-<div class="fold-actions"><button type="button" class="cta fold-btn" aria-expanded="false" data-more="Voir tout (10)" data-less="Voir moins">Voir tout (10)</button></div>
+<div class="fold-actions"><button type="button" class="cta fold-btn" aria-expanded="false" data-more="Voir toutes les plateformes" data-less="Voir moins">Voir toutes les plateformes</button></div>
+</section>
+
+<section class="sec wall">
+  <h2>Chez tous tes marchands préférés</h2>
+  <ul id="marchands"><li><span class="lg" data-logo="amazon.fr" data-i="A"></span>Amazon</li><li><span class="lg" data-logo="fnac.com" data-i="F"></span>Fnac</li><li><span class="lg" data-logo="darty.com" data-i="D"></span>Darty</li><li><span class="lg" data-logo="booking.com" data-i="B"></span>Booking</li><li><span class="lg" data-logo="nike.com" data-i="N"></span>Nike</li><li><span class="lg" data-logo="zalando.fr" data-i="Z"></span>Zalando</li><li><span class="lg" data-logo="sephora.fr" data-i="S"></span>Sephora</li><li><span class="lg" data-logo="decathlon.fr" data-i="D"></span>Decathlon</li><li><span class="lg" data-logo="cdiscount.com" data-i="C"></span>Cdiscount</li><li><span class="lg" data-logo="boulanger.com" data-i="B"></span>Boulanger</li><li><span class="lg" data-logo="leroymerlin.fr" data-i="L"></span>Leroy Merlin</li><li><span class="lg" data-logo="ikea.com" data-i="I"></span>IKEA</li><li><span class="lg" data-logo="adidas.fr" data-i="A"></span>Adidas</li><li><span class="lg" data-logo="carrefour.fr" data-i="C"></span>Carrefour</li><li><span class="lg" data-logo="intermarche.com" data-i="I"></span>Intermarché</li><li><span class="lg" data-logo="auchan.fr" data-i="A"></span>Auchan</li><li><span class="lg" data-logo="ubereats.com" data-i="U"></span>Uber Eats</li><li><span class="lg" data-logo="yves-rocher.fr" data-i="Y"></span>Yves Rocher</li></ul>
+  <small>Exemples de marchands souvent présents sur les sites de cashback. La liste et les taux varient selon chaque site.</small>
 </section>
 
 <section class="sec proof" id="ils-en-parlent">
@@ -678,22 +694,6 @@ html:not(.js) .fold-btn{display:none}
     <li>Contenus indépendants</li>
     <li>Mise à jour régulière</li>
   </ul>
-</section>
-
-<section class="sec sim" id="simulateur">
-  <div class="sim-box">
-    <h2>Combien tu pourrais récupérer ?</h2>
-    <small>Simple exemple avec 3 % de cashback : le taux réel varie selon les marchands.</small>
-    <label for="budget">Tes achats en ligne par mois : <span id="bval">150</span> €</label>
-    <input id="budget" type="range" min="50" max="3000" step="10" value="150" aria-valuetext="150 € par mois">
-    <div class="sim-scale" aria-hidden="true"><span>50 €</span><span>3&#8239;000 €</span></div>
-    <div class="sim-res">
-      <div class="sim-card"><span>Budget annuel</span><strong id="sAnnual">1&#8239;800 €</strong></div>
-      <div class="sim-card hl"><span>Cashback annuel estimé</span><strong id="gain">54 €</strong></div>
-      <div class="sim-card"><span>Soit d'économies par mois</span><strong id="sMonth">4,50 €</strong></div>
-    </div>
-    <a class="cta sim-cta" href="#partenaires">Je choisis mon site</a>
-  </div>
 </section>
 
 <section class="sec seo">
