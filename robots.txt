@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://plateforme-revenus.vercel.app/sitemap.xml
+Sitemap: https://plateforme-revenus.jercat.fr/sitemap.xml
