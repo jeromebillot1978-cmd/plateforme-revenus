@@ -352,7 +352,7 @@
     <loc>https://plateforme-revenus.jercat.fr/comment-fonctionne-le-cashback.html</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://plateforme-revenus.jercat.fr/comment-gagner-50-euros-par-mois.html</loc>
@@ -524,6 +524,24 @@
   </url>
   <url>
     <loc>https://plateforme-revenus.jercat.fr/widilo.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://plateforme-revenus.jercat.fr/revenus-complementaires.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://plateforme-revenus.jercat.fr/guide-parrainage.html</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://plateforme-revenus.jercat.fr/erreurs-cashback-parrainage.html</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
